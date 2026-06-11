@@ -365,7 +365,7 @@
     saveState(); renderChrome(); renderFilters(); render();
   });
 
-  fetch('data/conferences.yml')
+  fetch('data/conferences.yml', { cache: 'no-cache' })
     .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
     .then(text => {
       confs = jsyaml.load(text) || [];

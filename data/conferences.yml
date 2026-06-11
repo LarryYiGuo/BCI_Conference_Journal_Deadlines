@@ -40,7 +40,7 @@
   place: Melbourne, Australia
   sub: ML
   rank: CCF-C
-  core: N
+  core: C
   h5: 25
   ccfddl: acml
   track: Conference Track
@@ -423,7 +423,7 @@
   date: Jan 5 - 9, 2027
   place: Disney Springs, Buena Vista, FL, USA
   sub: CV
-  rank: CCF-C
+  rank: 非CCF
   core: A
   h5: 131
   ccfddl: wacv
@@ -441,7 +441,7 @@
   abstract_deadline: 2026-11-06 23:59
   tz: '-12:00'
   tz_label: AoE
-  date: Jun 19–26, 2027
+  date: Jun 20-24, 2027
   place: Seattle, WA, USA
   sub: CV
   rank: CCF-A
@@ -591,7 +591,7 @@
   date: '2028'
   place: TBD (Europe)
   sub: CV
-  rank: CCF-A
+  rank: CCF-B
   core: A*
   h5: 262
   ccfddl: eccv
@@ -636,7 +636,7 @@
   date: '2027'
   place: TBD
   sub: AC
-  rank: CCF-B
+  rank: CCF-C
   core: B
   h5:
   ccfddl: icmi
@@ -680,7 +680,7 @@
   date: Aug 30 – Sep 3, 2027
   place: Darmstadt, Germany
   sub: SP
-  rank: CCF-C
+  rank: 非CCF
   core: N
   h5: 35
   ccfddl: eusipco
@@ -853,7 +853,7 @@
   abstract_deadline:
   tz: '-12:00'
   tz_label: AoE
-  date: Jun 2027
+  date: Jun 26-30, 2027
   place: Toronto, Canada
   sub: BCI
   rank: 非CCF

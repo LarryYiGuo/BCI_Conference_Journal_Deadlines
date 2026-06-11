@@ -306,7 +306,7 @@
     const rank = c.rank === '非CCF' ? t().nonCCF : c.rank;
     const badges = [
       lang === 'zh' ? `<span class="badge fill">${esc(rank)}</span>` : '',
-      c.core ? `<span class="badge">CORE ${esc(c.core)}</span>` : '',
+      (c.core && c.core !== 'N') ? `<span class="badge">CORE ${esc(c.core)}</span>` : '',
       c.h5 ? `<span class="badge">h5 ${esc(c.h5)}</span>` : '',
       c.estimated ? `<span class="badge est">${t().est}</span>` : '',
     ].join('');

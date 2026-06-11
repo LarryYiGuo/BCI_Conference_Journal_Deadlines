@@ -44,8 +44,13 @@ biomedical engineering and neural engineering. Organized after
 A pure static site — no build step. Everything lives in
 [`data/conferences.yml`](data/conferences.yml); edit the YAML and the site updates.
 
-- Entries with a `ccfddl` key refresh automatically every Monday; the rest
-  (SfN, OHBM, EMBC, NER, BCI Meeting, ACII, ISBI) are maintained by hand
+- Entries with a `ccfddl` key refresh automatically every Monday
+- The remaining seven (SfN, OHBM, EMBC, NER, BCI Meeting, ACII, ISBI) have no
+  structured upstream, so a **CFP watcher**
+  ([`scripts/watch_manual.py`](scripts/watch_manual.py)) fingerprints the
+  deadline-related content of each official site weekly and **opens a GitHub
+  Issue** (label `cfp-watch`) with extracted candidate dates whenever a page
+  changes — maintenance is reactive, not a patrol
 - `estimated: true` marks dates projected from past cycles — always confirm with the
   official CFP
 - Journals (TPAMI, TNNLS, JNE, TNSRE, …) have rolling submissions and are not tracked
@@ -102,8 +107,11 @@ MIT
 纯静态站点,无构建步骤。所有数据在 [`data/conferences.yml`](data/conferences.yml),
 改完 YAML 即生效。
 
-- 带 `ccfddl` 字段的条目每周一自动刷新;其余(SfN、OHBM、EMBC、NER、BCI Meeting、
-  ACII、ISBI)人工维护
+- 带 `ccfddl` 字段的条目每周一自动刷新
+- 其余七个(SfN、OHBM、EMBC、NER、BCI Meeting、ACII、ISBI)没有结构化数据源,
+  由 **CFP 监视器**([`scripts/watch_manual.py`](scripts/watch_manual.py))每周
+  对官网的截稿相关内容做指纹比对,页面一有变化就**自动开 GitHub Issue**
+  (标签 `cfp-watch`)并附上抓取到的候选日期——人工维护从"主动巡查"降为"收到通知再改"
 - `estimated: true` 表示按往年规律推测的日期,以官网 CFP 为准
 - 期刊(TPAMI / TNNLS / JNE / TNSRE 等)为滚动投稿,不收录
 

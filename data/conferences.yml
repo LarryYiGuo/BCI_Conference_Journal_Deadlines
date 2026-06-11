@@ -623,6 +623,7 @@
   note: ACII 2026 (Puebla) 主 track 截稿已过,Demo Fast Track 6/20 仍可投;2027 届预计 2027 年 3–4 月截稿
   note_en: ACII 2026 (Puebla) main track closed; Demo Fast Track open until Jun 20; 2027 deadline expected ~Mar–Apr 2027
 
+  watch: https://acii-conf.net/
 - id: icmi27
   title: ICMI
   year: 2027
@@ -732,6 +733,7 @@
   note: EMBC 2026 (Toronto, Jul) 各轮截稿已过;2027 届(第 49 届)预计 2026 年 11 月截稿
   note_en: EMBC 2026 (Toronto, Jul) rounds closed; 2027 (49th) deadline expected ~November 2026
 
+  watch: https://embc.embs.org/
 - id: isbi27
   title: ISBI
   year: 2027
@@ -753,6 +755,7 @@
   note: 会期/地点已定,截稿未公布;历年在 10 月底–11 月初
   note_en: Dates/venue set, deadline TBA; historically late Oct – early Nov
 
+  watch: https://biomedicalimaging.org/
 - id: miccai27
   title: MICCAI
   year: 2027
@@ -818,6 +821,7 @@
   note: abstract 截稿已延期至 6/11;Late-breaking 窗口 9/8–9/15
   note_en: Abstract deadline extended to Jun 11; late-breaking window Sep 8–15
 
+  watch: https://www.sfn.org/meetings/neuroscience-2026
 - id: ner27
   title: IEEE NER
   year: 2027
@@ -839,6 +843,7 @@
   note: 第 13 届已宣布在欧洲举办,城市/日期待定;历年截稿在前一年 11–12 月
   note_en: 13th edition announced for Europe, city/dates TBA; deadlines historically Nov–Dec of the prior year
 
+  watch: https://ieee-ner.org/
 - id: ohbm27
   title: OHBM
   year: 2027
@@ -860,6 +865,7 @@
   note: 2027 地点 Toronto 已确认;abstract 截稿按往年规律推测在 12 月中旬
   note_en: Toronto confirmed for 2027; abstract deadline estimated mid-December per past years
 
+  watch: https://www.humanbrainmapping.org/i4a/pages/index.cfm?pageid=4226
 - id: bcimeeting27
   title: BCI Meeting
   year: 2027
@@ -880,3 +886,4 @@
   estimated: true
   note: 第 12 届;call for abstracts 2026-11-09 开放,notification 约 2027-03-03
   note_en: 12th edition; call for abstracts opens 2026-11-09, notification ~2027-03-03
+  watch: https://bcisociety.org/bci-meeting/

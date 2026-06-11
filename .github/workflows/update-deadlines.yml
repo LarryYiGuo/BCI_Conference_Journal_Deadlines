@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 jobs:
   update:
@@ -24,12 +25,18 @@ jobs:
       - name: Sync deadlines
         run: python scripts/update_deadlines.py
 
+      - name: Watch manually maintained CFP pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python scripts/watch_manual.py
+
       - name: Commit changes
         run: |
           if ! git diff --quiet; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add data/conferences.yml
+            git add data/conferences.yml data/watch_state.json
             git commit -m "chore: auto-sync deadlines from ccfddl"
             git push
           else

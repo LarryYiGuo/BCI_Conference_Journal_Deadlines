@@ -3,32 +3,25 @@
 **Live site:** https://larryyiguo.github.io/BCI_Conference_Deadlines/
 
 A deadline tracker for **BCI / EEG / brain-signal** researchers — 40 conferences across
-machine learning, data mining, vision & multimedia, affective computing, signal processing,
-biomedical engineering and neural engineering. Organized after
-[hci-deadlines](https://hci-deadlines.github.io/) and [ccfddl](https://ccfddl.com/).
+machine learning, data mining, vision & multimedia, affective computing, signal
+processing, biomedical engineering and neural engineering.
 
 ## Features
 
-- **Live countdowns** to the next submission deadline of every tracked conference,
-  sorted into *Upcoming / To-be-announced / Passed*
-- **Two deadlines, two colors** — abstract/registration (blue) vs. full-paper
-  submission (red), plotted on a per-conference **timeline** with a "today" marker;
-  multi-round venues carry a track label (e.g. WACV *Round 1*, KDD *Cycle 1*)
-- **Add to calendar** — every deadline has a one-click Google Calendar link and an
-  `.ics` download that works with Apple / Outlook mail clients
-- **Auto-sync** — a weekly GitHub Action
-  ([`scripts/update_deadlines.py`](scripts/update_deadlines.py)) refreshes dates from the
-  [ccfddl dataset](https://github.com/ccfddl/ccf-deadlines). Once a deadline passes, the
-  entry waits in *TBA* until the next CFP appears upstream. Manually verified dates
-  (`estimated: false`) are **never overwritten** — community datasets are occasionally
-  off by a day, so estimates and expired entries are the only ones auto-updated
-- **Venue metrics** on every card — **CCF** rank (China), **CORE** rank (international),
-  and the Google Scholar **h5-index** (32 of 40 venues; conferences have no JCR impact
-  factor, h5 is the standard citation metric; abstract-based meetings like SfN/OHBM are
-  not indexed)
-- **Theme colors with rank shading** — four high-saturation themes; *the darker the
-  color, the higher the venue rank* (CCF-A darkest)
-- **EN / 中文 toggle** and shareable filter URLs (`?sub=ML,CV&lang=en`)
+- **Live countdowns** to every upcoming submission deadline, grouped into
+  *Upcoming / To-be-announced / Passed*
+- **Abstract vs. submission** deadlines in two colors (blue / red), drawn on a
+  per-conference **timeline** with a today marker; multi-round venues are labeled
+  (*Round 1*, *Cycle 1*, …)
+- **Add to calendar** — Google Calendar link and `.ics` download for every deadline
+- **Auto-updated** — dates sync weekly from the
+  [ccfddl dataset](https://github.com/ccfddl/ccf-deadlines); conferences outside that
+  dataset are watched on their official sites and flagged for review when a CFP changes.
+  Closed deadlines move to *TBA* until the next cycle is announced
+- **Venue metrics** — CCF rank, CORE rank and Google Scholar h5-index on every card
+  (conferences have no JCR impact factor; h5 is the standard citation metric)
+- **Four color themes, shaded by rank** — the darker the color, the higher the venue rank
+- **EN / 中文** with shareable filter URLs (`?sub=ML,CV&lang=en`)
 
 ## Categories
 
@@ -41,25 +34,15 @@ biomedical engineering and neural engineering. Organized after
 
 ## Data
 
-A pure static site — no build step. Everything lives in
-[`data/conferences.yml`](data/conferences.yml); edit the YAML and the site updates.
-
-- Entries with a `ccfddl` key refresh automatically every Monday
-- The remaining seven (SfN, OHBM, EMBC, NER, BCI Meeting, ACII, ISBI) have no
-  structured upstream, so a **CFP watcher**
-  ([`scripts/watch_manual.py`](scripts/watch_manual.py)) fingerprints the
-  deadline-related content of each official site weekly and **opens a GitHub
-  Issue** (label `cfp-watch`) with extracted candidate dates whenever a page
-  changes — maintenance is reactive, not a patrol
-- `estimated: true` marks dates projected from past cycles — always confirm with the
-  official CFP
-- Journals (TPAMI, TNNLS, JNE, TNSRE, …) have rolling submissions and are not tracked
-
-PRs fixing dates are welcome.
+Pure static site, no build step. All data lives in
+[`data/conferences.yml`](data/conferences.yml) — edit the YAML and the site updates.
+Dates marked *Est.* are projected from past cycles; always confirm with the official
+CFP. Journals (TPAMI, TNNLS, JNE, TNSRE, …) have rolling submissions and are not
+tracked. PRs fixing dates are welcome.
 
 ```bash
 # local preview
-python3 -m http.server 8000   # then open http://localhost:8000
+python3 -m http.server 8000   # open http://localhost:8000
 ```
 
 ## License
@@ -73,24 +56,20 @@ MIT
 **在线访问:** https://larryyiguo.github.io/BCI_Conference_Deadlines/
 
 面向 **BCI / EEG / 脑信号** 研究者的会议截稿追踪——覆盖机器学习、数据挖掘、视觉多媒体、
-情感计算、信号处理、医工影像与神经工程共 40 个会议。组织方式参考
-[hci-deadlines](https://hci-deadlines.github.io/) 与 [ccfddl](https://ccfddl.com/)。
+情感计算、信号处理、医工影像与神经工程共 40 个会议。
 
 ## 功能
 
-- 每个会议下一届投稿截止的**实时倒计时**,按「即将截稿 / 待公布 / 已截稿」分组
-- **双截稿颜色区分**——摘要/注册(蓝)与全文提交(红),配每个会议的**时间轴**
-  和"今天"标记;多轮会议带轮次标签(如 WACV *Round 1*、KDD *Cycle 1*)
+- 所有会议下一届投稿截止的**实时倒计时**,按「即将截稿 / 待公布 / 已截稿」分组
+- **摘要与全文双截稿**蓝红两色区分,配每个会议的**时间轴**与"今天"标记;
+  多轮会议带轮次标签(*Round 1*、*Cycle 1* 等)
 - **一键加日历**——每条截稿支持 Google Calendar 链接和 `.ics` 下载
-  (适用于 Apple / Outlook 等邮箱日历)
-- **自动同步**——GitHub Action([`scripts/update_deadlines.py`](scripts/update_deadlines.py))
-  每周一从 [ccfddl 数据集](https://github.com/ccfddl/ccf-deadlines) 刷新日期;截稿过后条目
-  进入「待公布」,等待上游下一届 CFP。人工核实过的日期(`estimated: false`)**不会被覆盖**
-  ——社区数据集偶有一天误差,自动更新只作用于预估和过期条目
-- 每张卡片附**会议指标**——**CCF** 等级(中国)、**CORE** 等级(国际)、Google Scholar
-  **h5-index**(40 个中收录 32 个;会议没有 JCR 影响因子,h5 为通行引用指标;
-  SfN/OHBM 等摘要制大会不被收录)
-- **主题色 + 分级深浅**——四大高饱和主题色,*颜色越深代表会议分级越高*(CCF-A 最深)
+- **自动更新**——日期每周从 [ccfddl 数据集](https://github.com/ccfddl/ccf-deadlines)
+  同步;不在该数据集的会议监视官网,CFP 一变化即标记复核。截稿过后条目进入「待公布」,
+  等待下一届公布
+- 每张卡片附**会议指标**——CCF 等级、CORE 等级、Google Scholar h5-index
+  (会议没有 JCR 影响因子,h5 为通行引用指标)
+- **四大主题色 + 分级深浅**——颜色越深代表会议分级越高
 - **中英文切换**,过滤条件可分享(`?sub=ML,CV&lang=en`)
 
 ## 分类
@@ -105,17 +84,8 @@ MIT
 ## 数据
 
 纯静态站点,无构建步骤。所有数据在 [`data/conferences.yml`](data/conferences.yml),
-改完 YAML 即生效。
-
-- 带 `ccfddl` 字段的条目每周一自动刷新
-- 其余七个(SfN、OHBM、EMBC、NER、BCI Meeting、ACII、ISBI)没有结构化数据源,
-  由 **CFP 监视器**([`scripts/watch_manual.py`](scripts/watch_manual.py))每周
-  对官网的截稿相关内容做指纹比对,页面一有变化就**自动开 GitHub Issue**
-  (标签 `cfp-watch`)并附上抓取到的候选日期——人工维护从"主动巡查"降为"收到通知再改"
-- `estimated: true` 表示按往年规律推测的日期,以官网 CFP 为准
-- 期刊(TPAMI / TNNLS / JNE / TNSRE 等)为滚动投稿,不收录
-
-欢迎 PR 修正日期。
+改完 YAML 即生效。标注「预估」的日期为按往年规律推测,以官网 CFP 为准。
+期刊(TPAMI / TNNLS / JNE / TNSRE 等)为滚动投稿,不收录。欢迎 PR 修正日期。
 
 ```bash
 # 本地预览

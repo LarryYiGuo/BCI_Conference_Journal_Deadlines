@@ -520,6 +520,20 @@
   note: MDPI 生物医学工程 OA 刊,工程技术大类 3 区,审稿约 1-2 个月,适合 EEG/BCI 康复、神经工程方法学论文;部分较新来源给出实时 IF 约 3.7,2024 JCR 官方为 4.4。
   note_en: MDPI biomedical-engineering OA journal, CAS engineering tier 3, ~1-2 month review; suits EEG/BCI rehabilitation and neural-engineering methods papers (2024 JCR IF 4.4; newer real-time estimates ~3.7).
 
+- id: scientificdata
+  title: Scientific Data
+  full_name: Scientific Data
+  publisher: Springer Nature (Nature Portfolio)
+  link: 'https://www.nature.com/sdata/'
+  sub: BME
+  ccf: none
+  cas: 2区
+  jcr: Q1
+  impact_factor: 6.9
+  oa: true
+  note: Nature 旗下专发 Data Descriptor 的金色 OA 数据期刊,综合性 2 区 / JCR Q1;发布并被正式引用 EEG/BCI 公开数据集的权威平台,数据集本身即可成为一篇可追溯、可引用的同行评审论文。
+  note_en: Nature's gold-OA journal for peer-reviewed Data Descriptors; the authoritative venue for publishing and citing open EEG/BCI datasets, turning a dataset into a citable peer-reviewed publication.
+
 - id: scientificreports
   title: Scientific Reports
   full_name: Scientific Reports

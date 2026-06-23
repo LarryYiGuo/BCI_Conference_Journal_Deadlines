@@ -1,6 +1,6 @@
 # 🧠 BCI Conference & Journal Deadlines
 
-**Live site:** https://larryyiguo.github.io/BCI_Conference_Deadlines/
+**Live site:** [https://larryyiguo.github.io/BCI_Conference_Deadlines/](https://larryyiguo.github.io/BCI_Conference_Journal_Deadlines/)
 
 A publishing tracker for **BCI / EEG / brain-signal** researchers — **40 conferences**
 (with deadlines) and **52 rolling-submission journals**, across machine learning, data

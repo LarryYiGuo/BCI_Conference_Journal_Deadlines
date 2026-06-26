@@ -143,8 +143,15 @@ a{color:inherit}
 .evt-meta .k{font-family:var(--mono);font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-muted);margin-right:.35rem}
 .evt-meta a.place{text-decoration:none;border-bottom:1px solid var(--hair)}
 .evt-meta a.place:hover{border-color:var(--ink)}
-.evt-meta a.fmt{text-decoration:none;border-bottom:1px solid var(--hair);white-space:nowrap}
-.evt-meta a.fmt:hover{border-color:var(--blue);color:var(--blue)}
+.evt-meta a.fmt{
+  display:inline-flex;align-items:center;gap:.3rem;
+  font-family:var(--mono);font-size:.66rem;font-weight:500;letter-spacing:.02em;
+  color:var(--orange);background:color-mix(in srgb, var(--orange) 9%, transparent);
+  border:1px solid color-mix(in srgb, var(--orange) 45%, transparent);
+  padding:.12rem .55rem;border-radius:5px;text-decoration:none;white-space:nowrap;
+  transition:all .15s;margin-left:.15rem;
+}
+.evt-meta a.fmt:hover{background:var(--orange);color:#fff;border-color:var(--orange)}
 .evt-meta .sep{color:var(--hair);margin:0 .7rem}
 .evt-note{font-size:.78rem;color:var(--ink-muted);margin-top:.5rem;line-height:1.6;max-width:62ch}
 
@@ -219,6 +226,6 @@ footer{padding:3.4rem 0 4rem;border-top:1px solid var(--hair);margin-top:3.4rem}
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
-<script src="static/main.js?v=20260612-12"></script>
+<script src="static/main.js?v=20260612-13"></script>
 </body>
 </html>

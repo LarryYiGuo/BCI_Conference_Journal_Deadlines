@@ -432,7 +432,7 @@
       : `<a class="place" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place)}" target="_blank" rel="noopener">${esc(place)}</a>`;
     const fmtLabel = (lang === 'en' && c.format_type_en) ? c.format_type_en : (c.format_type || t().fmtK);
     const formatHTML = c.format
-      ? `<span class="sep">·</span><a class="fmt" href="${esc(c.format)}" target="_blank" rel="noopener">📄 ${esc(fmtLabel)}</a>` : '';
+      ? `<a class="fmt" href="${esc(c.format)}" target="_blank" rel="noopener">📄 ${esc(fmtLabel)}</a>` : '';
     const note = field(c, 'note');
 
     return `<div class="evt${past ? ' past' : ''}">

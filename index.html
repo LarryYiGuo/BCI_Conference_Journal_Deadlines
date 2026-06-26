@@ -10,7 +10,7 @@
 <style>
 :root{
   --bg:#fafaf8; --bg2:#f0f0ee;
-  --ink:#2C2C2A; --ink-dim:#5F5E5A; --ink-muted:#8a8a84; --hair:#e8e6df;
+  --ink:#2C2C2A; --ink-dim:#5F5E5A; --ink-muted:#8a8a84; --hair:#e8e6df; --line-soft:#d6d5cf;
   --orange:#D85A30; --blue:#4F7396; --red:#C0473F; --green:#1D9E75;
   /* theme accents — high-sat, shaded by rank */
   --t-algo:#2563EB; --t-vis:#7C3AED; --t-med:#D97706; --t-neuro:#DC2626;
@@ -145,13 +145,13 @@ a{color:inherit}
 .evt-meta a.place:hover{border-color:var(--ink)}
 .evt-meta a.fmt{
   display:inline-flex;align-items:center;gap:.3rem;
-  font-family:var(--mono);font-size:.66rem;font-weight:500;letter-spacing:.02em;
-  color:var(--orange);background:color-mix(in srgb, var(--orange) 9%, transparent);
-  border:1px solid color-mix(in srgb, var(--orange) 45%, transparent);
-  padding:.12rem .55rem;border-radius:5px;text-decoration:none;white-space:nowrap;
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.02em;
+  color:var(--ink-dim);background:rgba(0,0,0,.035);
+  border:1px solid var(--line-soft);
+  padding:.12rem .5rem;border-radius:4px;text-decoration:none;white-space:nowrap;
   transition:all .15s;margin-left:.15rem;
 }
-.evt-meta a.fmt:hover{background:var(--orange);color:#fff;border-color:var(--orange)}
+.evt-meta a.fmt:hover{background:rgba(0,0,0,.06);border-color:var(--ink-muted);color:var(--ink)}
 .evt-meta .sep{color:var(--hair);margin:0 .7rem}
 .evt-note{font-size:.78rem;color:var(--ink-muted);margin-top:.5rem;line-height:1.6;max-width:62ch}
 
@@ -226,6 +226,6 @@ footer{padding:3.4rem 0 4rem;border-top:1px solid var(--hair);margin-top:3.4rem}
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
-<script src="static/main.js?v=20260612-13"></script>
+<script src="static/main.js?v=20260612-14"></script>
 </body>
 </html>

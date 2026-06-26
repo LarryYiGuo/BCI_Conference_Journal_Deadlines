@@ -371,13 +371,15 @@
       const tagCls = /spot/i.test(p.tag) ? 'spot' : (p.tag === 'CN' ? 'cn' : '');
       const tag = p.tag ? `<span class="ptag ${tagCls}">${esc(p.tag)}</span>` : '';
       const schol = 'https://scholar.google.com/scholar?q=' + encodeURIComponent(p.title);
+      const pdesc = field(p, 'desc');
+      const pgroup = field(p, 'group') || p.group;
       return `<div class="paper-row">
         <div class="paper-line">
           <a class="pt" href="${schol}" target="_blank" rel="noopener">${esc(p.title)}</a>
           <span class="py">${esc(p.year)}</span>${tag}
-          ${p.group ? `<span class="pg">· ${esc(p.group)}</span>` : ''}
+          ${pgroup ? `<span class="pg">· ${esc(pgroup)}</span>` : ''}
         </div>
-        ${p.desc ? `<div class="pd">${esc(p.desc)}</div>` : ''}
+        ${pdesc ? `<div class="pd">${esc(pdesc)}</div>` : ''}
       </div>`;
     }).join('');
     return `<div class="papers"><div class="papers-head">${head} · ${list.length}</div>${rows}</div>`;

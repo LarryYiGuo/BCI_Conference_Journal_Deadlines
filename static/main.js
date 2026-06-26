@@ -57,6 +57,7 @@
       subK: '截稿',
       dateLbl: '会期',
       placeLbl: '地点',
+      fmtK: '论文模板',
       est: '预估',
       nonCCF: '非CCF',
       gcal: '＋Google',
@@ -105,6 +106,7 @@
       subK: 'Paper',
       dateLbl: 'When',
       placeLbl: 'Where',
+      fmtK: 'Template',
       est: 'Est.',
       nonCCF: 'Non-CCF',
       gcal: '＋Google',
@@ -349,6 +351,9 @@
     const place = field(c, 'place') || c.place;
     const placeHTML = (!place || /TBD/i.test(place)) ? esc(place)
       : `<a class="place" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place)}" target="_blank" rel="noopener">${esc(place)}</a>`;
+    const fmtLabel = (lang === 'en' && c.format_type_en) ? c.format_type_en : (c.format_type || t().fmtK);
+    const formatHTML = c.format
+      ? `<span class="sep">·</span><a class="fmt" href="${esc(c.format)}" target="_blank" rel="noopener">📄 ${esc(fmtLabel)}</a>` : '';
     const note = field(c, 'note');
 
     return `<div class="evt${past ? ' past' : ''}">
@@ -366,7 +371,7 @@
         <div class="evt-metrics">${metrics}${trk}</div>
         ${!tbd && !past ? timelineHTML(reg, dl) : ''}
         ${dlRows.length ? `<div class="dls">${dlRows.join('')}</div>` : ''}
-        <div class="evt-meta"><span class="k">${t().dateLbl}</span>${esc(c.date)}<span class="sep">·</span><span class="k">${t().placeLbl}</span>${placeHTML}</div>
+        <div class="evt-meta"><span class="k">${t().dateLbl}</span>${esc(c.date)}<span class="sep">·</span><span class="k">${t().placeLbl}</span>${placeHTML}${formatHTML}</div>
         ${note ? `<div class="evt-note">${esc(note)}</div>` : ''}
       </div>
     </div>`;

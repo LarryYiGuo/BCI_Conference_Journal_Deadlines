@@ -14,6 +14,9 @@
 #   core               CORE 等级(国际),N = 不在 CORE 目录
 #   h5                 Google Scholar h5-index(会议无 JCR IF)
 #   ccfddl             ccfddl 数据源文件名,GitHub Action 每周自动同步;null = 人工维护
+#   format             官方论文模板 / author kit / 格式说明链接
+#   format_type        模板类型标签(中);format_type_en 英文标签
+#                      每周 check_format_links.py 做链接健康检查,失效自动开 Issue
 #   track              轮次/赛道(如 Round 1 / Cycle 1 / Conference Track)
 #   estimated          true = 官方未公布,按往年规律推测;false 的条目不会被自动同步覆盖
 #   note / note_en     备注(中 / 英,客观信息)
@@ -38,6 +41,9 @@
   tz_label: AoE
   date: December 1-4, 2026
   place: Melbourne, Australia
+  format: 'https://www.acml-conf.org/2026/downloads/ACML_camera_ready.zip'
+  format_type: ACML PMLR LaTeX 模板
+  format_type_en: ACML PMLR template
   sub: ML
   rank: CCF-C
   core: C
@@ -59,6 +65,9 @@
   tz_label: UTC-12
   date: February 16-23, 2027
   place: Montréal, Québec, Canada
+  format: 'https://aaai.org/authorkit27/'
+  format_type: AAAI Author Kit (LaTeX/Word 模板)
+  format_type_en: AAAI Author Kit
   sub: ML
   rank: CCF-A
   core: A*
@@ -75,11 +84,14 @@
   full_name: International Conference on Learning Representations
   link: 'https://iclr.cc/'
   deadline: '2026-09-23 23:59'
-  abstract_deadline: 2026-09-18 23:59
+  abstract_deadline: '2026-09-18 23:59'
   tz: '-12:00'
   tz_label: AoE
   date: Late Apr 2027
   place: West Coast North America (TBD)
+  format: 'https://github.com/ICLR/Master-Template'
+  format_type: ICLR LaTeX 模板 (style files)
+  format_type_en: ICLR LaTeX template
   sub: ML
   rank: CCF-A
   core: A*
@@ -96,11 +108,14 @@
   full_name: International Conference on Artificial Intelligence and Statistics
   link: 'https://aistats.org/'
   deadline: '2026-10-01 23:59'
-  abstract_deadline: 2026-09-24 23:59
+  abstract_deadline: '2026-09-24 23:59'
   tz: '-12:00'
   tz_label: AoE
   date: Spring 2027
   place: TBD
+  format: 'https://aistats.org/'
+  format_type: AISTATS LaTeX 模板 (PaperPack)
+  format_type_en: AISTATS template
   sub: ML
   rank: CCF-C
   core: A
@@ -117,11 +132,14 @@
   full_name: International Joint Conference on Artificial Intelligence
   link: 'https://www.ijcai.org/'
   deadline: '2027-01-18 23:59'
-  abstract_deadline: 2027-01-11 23:59
+  abstract_deadline: '2027-01-11 23:59'
   tz: '-12:00'
   tz_label: AoE
   date: Aug 2027
   place: TBD
+  format: 'https://www.ijcai.org/authors_kit'
+  format_type: IJCAI Author's Kit (LaTeX/Word 模板)
+  format_type_en: IJCAI Author's Kit
   sub: ML
   rank: CCF-B
   core: A*
@@ -138,11 +156,14 @@
   full_name: International Conference on Machine Learning
   link: 'https://icml.cc/'
   deadline: '2027-01-27 23:59'
-  abstract_deadline: 2027-01-21 23:59
+  abstract_deadline: '2027-01-21 23:59'
   tz: '-12:00'
   tz_label: AoE
   date: Jul 2027
   place: South America (TBD)
+  format: 'https://icml.cc/Conferences/2026/AuthorInstructions'
+  format_type: ICML LaTeX 模板/作者格式说明
+  format_type_en: ICML author instructions
   sub: ML
   rank: CCF-A
   core: A*
@@ -164,6 +185,9 @@
   tz_label: AoE
   date: Aug 2027
   place: TBD
+  format: 'https://www.auai.org/uai2026/submission_instructions'
+  format_type: UAI LaTeX 模板/投稿格式说明
+  format_type_en: UAI submission format
   sub: ML
   rank: CCF-B
   core: A
@@ -180,11 +204,14 @@
   full_name: Conference on Neural Information Processing Systems
   link: 'https://neurips.cc/'
   deadline: '2027-05-05 23:59'
-  abstract_deadline: 2027-05-03 23:59
+  abstract_deadline: '2027-05-03 23:59'
   tz: '-12:00'
   tz_label: AoE
   date: Dec 2027
   place: Europe (TBD)
+  format: 'https://media.neurips.cc/Conferences/NeurIPS2025/Styles.zip'
+  format_type: NeurIPS LaTeX 模板 (Styles.zip)
+  format_type_en: NeurIPS style files
   sub: ML
   rank: CCF-A
   core: A*
@@ -203,11 +230,14 @@
   full_name: ACM SIGKDD Conference on Knowledge Discovery and Data Mining
   link: 'https://kdd.org/'
   deadline: '2026-07-31 23:59'
-  abstract_deadline: 2026-07-24 23:59
+  abstract_deadline: '2026-07-24 23:59'
   tz: '-12:00'
   tz_label: AoE
   date: Aug 2027
   place: TBD
+  format: 'https://kdd2027.kdd.org/research-track-call-for-papers/'
+  format_type: ACM sigconf 模板(CFP formatting 段)
+  format_type_en: ACM sigconf template
   sub: DM
   rank: CCF-A
   core: A*
@@ -224,11 +254,14 @@
   full_name: The ACM Web Conference
   link: 'https://thewebconf.org/'
   deadline: '2026-10-07 23:59'
-  abstract_deadline: 2026-09-30 23:59
+  abstract_deadline: '2026-09-30 23:59'
   tz: '-12:00'
   tz_label: AoE
   date: '2027'
   place: Dublin, Ireland
+  format: 'https://www.acm.org/publications/proceedings-template'
+  format_type: ACM sigconf 模板
+  format_type_en: ACM sigconf template
   sub: DM
   rank: CCF-A
   core: A*
@@ -250,6 +283,9 @@
   tz_label: AoE
   date: Apr/May 2027
   place: USA (TBD)
+  format: 'https://www.siam.org/conferences-events/siam-conferences/sdm26/submissions/'
+  format_type: SIAM macros LaTeX 模板
+  format_type_en: SIAM macros template
   sub: DM
   rank: CCF-B
   core: A
@@ -271,6 +307,9 @@
   tz_label: AoE
   date: May/Jun 2027
   place: TBD
+  format: 'https://www.pakdd2026.org/authors-kit'
+  format_type: Springer LNCS/LNAI 模板
+  format_type_en: Springer LNCS/LNAI template
   sub: DM
   rank: CCF-C
   core: B
@@ -287,11 +326,14 @@
   full_name: International ACM SIGIR Conference on Research and Development in Information Retrieval
   link: 'https://sigir.org/'
   deadline: '2027-01-22 23:59'
-  abstract_deadline: 2027-01-15 23:59
+  abstract_deadline: '2027-01-15 23:59'
   tz: '-12:00'
   tz_label: AoE
   date: Jul 2027
   place: Silicon Valley, USA
+  format: 'https://www.acm.org/publications/proceedings-template'
+  format_type: ACM sigconf 模板
+  format_type_en: ACM sigconf template
   sub: DM
   rank: CCF-A
   core: A*
@@ -308,11 +350,14 @@
   full_name: European Conference on Machine Learning and Principles and Practice of Knowledge Discovery in Databases
   link: 'https://ecmlpkdd.org/'
   deadline: '2027-03-12 23:59'
-  abstract_deadline: 2027-03-05 23:59
+  abstract_deadline: '2027-03-05 23:59'
   tz: '-12:00'
   tz_label: AoE
   date: Sep 2027
   place: TBD
+  format: 'https://ecmlpkdd.org/2026/submissions-research-track/'
+  format_type: Springer LNCS 模板
+  format_type_en: Springer LNCS template
   sub: DM
   rank: CCF-B
   core: A
@@ -334,6 +379,9 @@
   tz_label: AoE
   date: '2027'
   place: TBD
+  format: 'https://www.acm.org/publications/proceedings-template'
+  format_type: ACM sigconf 模板
+  format_type_en: ACM sigconf template
   sub: DM
   rank: CCF-B
   core: A
@@ -355,6 +403,9 @@
   tz_label: AoE
   date: '2027'
   place: TBD
+  format: 'https://www.ieee.org/conferences/publishing/templates.html'
+  format_type: IEEE 会议模板
+  format_type_en: IEEE conf template
   sub: DM
   rank: CCF-B
   core: A*
@@ -378,6 +429,9 @@
   tz_label: AoE
   date: Jun 14–18, 2027
   place: Cape Town, South Africa
+  format: 'https://ijcnn.org/2027/authors/call-for-papers'
+  format_type: IEEE 会议模板
+  format_type_en: IEEE conf template
   sub: NC
   rank: CCF-C
   core: B
@@ -399,6 +453,9 @@
   tz_label: AoE
   date: '2027'
   place: TBD
+  format: 'https://www.springer.com/gp/computer-science/lncs/conference-proceedings-guidelines'
+  format_type: Springer LNCS 模板
+  format_type_en: Springer LNCS template
   sub: NC
   rank: CCF-C
   core: B
@@ -422,6 +479,9 @@
   tz_label: AoE
   date: Jan 5 - 9, 2027
   place: Disney Springs, Buena Vista, FL, USA
+  format: 'https://github.com/cvpr-org/author-kit'
+  format_type: CVF author kit (LaTeX)
+  format_type_en: CVF author kit
   sub: CV
   rank: 非CCF
   core: A
@@ -438,11 +498,14 @@
   full_name: IEEE/CVF Conference on Computer Vision and Pattern Recognition
   link: 'https://cvpr.thecvf.com/'
   deadline: '2026-11-12 23:59'
-  abstract_deadline: 2026-11-06 23:59
+  abstract_deadline: '2026-11-06 23:59'
   tz: '-12:00'
   tz_label: AoE
   date: Jun 20-24, 2027
   place: Seattle, WA, USA
+  format: 'https://github.com/cvpr-org/author-kit'
+  format_type: CVF author kit (LaTeX)
+  format_type_en: CVF author kit
   sub: CV
   rank: CCF-A
   core: A*
@@ -459,11 +522,14 @@
   full_name: IEEE/CVF International Conference on Computer Vision
   link: 'https://iccv.thecvf.com/'
   deadline: '2027-03-08 23:59'
-  abstract_deadline: 2027-03-01 23:59
+  abstract_deadline: '2027-03-01 23:59'
   tz: '-12:00'
   tz_label: AoE
   date: Oct 2–8, 2027
   place: Hong Kong, China
+  format: 'https://github.com/cvpr-org/author-kit'
+  format_type: CVF author kit (LaTeX)
+  format_type_en: CVF author kit
   sub: CV
   rank: CCF-A
   core: A*
@@ -485,6 +551,9 @@
   tz_label: AoE
   date: Nov 29 – Dec 3, 2027
   place: Singapore
+  format: 'https://2027.ieeeicip.org/paper-submission-instructions/'
+  format_type: IEEE 会议模板 / Author Kit
+  format_type_en: IEEE template / author kit
   sub: CV
   rank: CCF-C
   core: B
@@ -506,6 +575,9 @@
   tz_label: AoE
   date: Dec 2026
   place: TBD (Asia)
+  format: 'https://www.acmmmasia.org/'
+  format_type: ACM sigconf 模板(官网投稿说明)
+  format_type_en: ACM sigconf template
   sub: CV
   rank: CCF-C
   core: N
@@ -527,6 +599,9 @@
   tz_label: AoE
   date: '2027'
   place: TBD
+  format: 'https://www.acm.org/publications/proceedings-template'
+  format_type: ACM sigconf 模板
+  format_type_en: ACM sigconf template
   sub: CV
   rank: CCF-A
   core: A*
@@ -548,6 +623,9 @@
   tz_label: AoE
   date: '2027'
   place: UK
+  format: 'https://github.com/BritishMachineVisionAssociation/BMVCTemplate'
+  format_type: BMVC LaTeX 模板
+  format_type_en: BMVC LaTeX template
   sub: CV
   rank: CCF-C
   core: A
@@ -569,6 +647,9 @@
   tz_label: AoE
   date: Jul 2027
   place: TBD
+  format: 'https://2026.ieeeicme.org/author-information-and-submission-instructions/'
+  format_type: IEEE 会议模板
+  format_type_en: IEEE conf template
   sub: CV
   rank: CCF-B
   core: A
@@ -590,6 +671,9 @@
   tz_label: UTC-8
   date: '2028'
   place: TBD (Europe)
+  format: 'https://eccv.ecva.net/Conferences/2026/AuthorGuide'
+  format_type: Springer LNCS 模板
+  format_type_en: Springer LNCS template
   sub: CV
   rank: CCF-B
   core: A*
@@ -613,6 +697,9 @@
   tz_label: AoE
   date: '2027'
   place: TBD
+  format: 'https://www.ieee.org/conferences/publishing/templates.html'
+  format_type: IEEE 会议模板
+  format_type_en: IEEE conf template
   sub: AC
   rank: CCF-C
   core:
@@ -623,7 +710,6 @@
   note: ACII 2026 (Puebla) 主 track 截稿已过,Demo Fast Track 6/20 仍可投;2027 届预计 2027 年 3–4 月截稿
   note_en: ACII 2026 (Puebla) main track closed; Demo Fast Track open until Jun 20; 2027 deadline expected ~Mar–Apr 2027
 
-  watch: https://acii-conf.net/
 - id: icmi27
   title: ICMI
   year: 2027
@@ -635,6 +721,9 @@
   tz_label: AoE
   date: '2027'
   place: TBD
+  format: 'https://icmi.acm.org/2026/guidelines/'
+  format_type: ACM sigconf 模板(Author Guidelines)
+  format_type_en: ACM author guidelines
   sub: AC
   rank: CCF-C
   core: B
@@ -658,6 +747,9 @@
   tz_label: AoE
   date: May 16-21, 2027
   place: Toronto, Canada
+  format: 'https://www.ieee.org/conferences/publishing/templates.html'
+  format_type: IEEE 会议模板
+  format_type_en: IEEE conf template
   sub: SP
   rank: CCF-B
   core: B
@@ -679,6 +771,9 @@
   tz_label: AoE
   date: Aug 30 – Sep 3, 2027
   place: Darmstadt, Germany
+  format: 'https://www.ieee.org/conferences/publishing/templates.html'
+  format_type: IEEE 会议模板
+  format_type_en: IEEE conf template
   sub: SP
   rank: 非CCF
   core: N
@@ -702,6 +797,9 @@
   tz_label: UTC-5
   date: Dec 1-4, 2026
   place: Dallas, USA
+  format: 'https://www.ieee.org/conferences/publishing/templates.html'
+  format_type: IEEE 会议模板
+  format_type_en: IEEE conf template
   sub: BME
   rank: CCF-B
   core: N
@@ -723,6 +821,9 @@
   tz_label: EST
   date: Jul 2027
   place: TBD
+  format: 'https://www.ieee.org/conferences/publishing/templates.html'
+  format_type: IEEE 会议模板
+  format_type_en: IEEE conf template
   sub: BME
   rank: CCF-C
   core:
@@ -733,7 +834,6 @@
   note: EMBC 2026 (Toronto, Jul) 各轮截稿已过;2027 届(第 49 届)预计 2026 年 11 月截稿
   note_en: EMBC 2026 (Toronto, Jul) rounds closed; 2027 (49th) deadline expected ~November 2026
 
-  watch: https://embc.embs.org/
 - id: isbi27
   title: ISBI
   year: 2027
@@ -745,6 +845,9 @@
   tz_label: AoE
   date: May 25–28, 2027
   place: Lausanne, Switzerland
+  format: 'https://biomedicalimaging.org/2026/initial-author-instructions/'
+  format_type: IEEE 会议模板 / 投稿格式说明
+  format_type_en: IEEE template / instructions
   sub: BME
   rank: CCF-C
   core:
@@ -755,7 +858,6 @@
   note: 会期/地点已定,截稿未公布;历年在 10 月底–11 月初
   note_en: Dates/venue set, deadline TBA; historically late Oct – early Nov
 
-  watch: https://biomedicalimaging.org/
 - id: miccai27
   title: MICCAI
   year: 2027
@@ -767,6 +869,9 @@
   tz_label: PT
   date: '2027'
   place: TBD
+  format: 'https://conferences.miccai.org/2026/en/PAPER-SUBMISSION-GUIDELINES.html'
+  format_type: MICCAI LNCS LaTeX/Word 模板
+  format_type_en: MICCAI LNCS template
   sub: BME
   rank: CCF-B
   core: A
@@ -788,6 +893,9 @@
   tz_label: EST
   date: '2027'
   place: TBD
+  format: 'https://www.ieee.org/conferences/publishing/templates.html'
+  format_type: IEEE 会议模板
+  format_type_en: IEEE conf template
   sub: BME
   rank: CCF-C
   core: B
@@ -811,6 +919,9 @@
   tz_label: EDT
   date: Nov 14–18, 2026
   place: Washington, D.C., USA
+  format: 'https://www.sfn.org/meetings/neuroscience-2026/call-for-abstracts/rules-for-abstract-submissions'
+  format_type: 摘要格式说明
+  format_type_en: Abstract guidelines
   sub: BCI
   rank: 非CCF
   core:
@@ -821,7 +932,6 @@
   note: abstract 截稿已延期至 6/11;Late-breaking 窗口 9/8–9/15
   note_en: Abstract deadline extended to Jun 11; late-breaking window Sep 8–15
 
-  watch: https://www.sfn.org/meetings/neuroscience-2026
 - id: ner27
   title: IEEE NER
   year: 2027
@@ -833,6 +943,9 @@
   tz_label: AoE
   date: '2027'
   place: Europe (TBD)
+  format: 'https://www.ieee.org/conferences/publishing/templates.html'
+  format_type: IEEE 会议模板
+  format_type_en: IEEE conf template
   sub: BCI
   rank: 非CCF
   core:
@@ -843,7 +956,6 @@
   note: 第 13 届已宣布在欧洲举办,城市/日期待定;历年截稿在前一年 11–12 月
   note_en: 13th edition announced for Europe, city/dates TBA; deadlines historically Nov–Dec of the prior year
 
-  watch: https://ieee-ner.org/
 - id: ohbm27
   title: OHBM
   year: 2027
@@ -855,6 +967,9 @@
   tz_label: AoE
   date: Jun 26-30, 2027
   place: Toronto, Canada
+  format: 'https://www.humanbrainmapping.org/i4a/pages/index.cfm?pageid=3898'
+  format_type: 摘要格式说明
+  format_type_en: Abstract guidelines
   sub: BCI
   rank: 非CCF
   core:
@@ -865,7 +980,6 @@
   note: 2027 地点 Toronto 已确认;abstract 截稿按往年规律推测在 12 月中旬
   note_en: Toronto confirmed for 2027; abstract deadline estimated mid-December per past years
 
-  watch: https://www.humanbrainmapping.org/i4a/pages/index.cfm?pageid=4226
 - id: bcimeeting27
   title: BCI Meeting
   year: 2027
@@ -877,6 +991,9 @@
   tz_label: AoE
   date: Jun 7–10, 2027
   place: Šibenik, Croatia
+  format: 'https://bcisociety.org/bci-meeting/'
+  format_type: 摘要格式说明
+  format_type_en: Abstract guidelines
   sub: BCI
   rank: 非CCF
   core:
@@ -886,4 +1003,3 @@
   estimated: true
   note: 第 12 届;call for abstracts 2026-11-09 开放,notification 约 2027-03-03
   note_en: 12th edition; call for abstracts opens 2026-11-09, notification ~2027-03-03
-  watch: https://bcisociety.org/bci-meeting/

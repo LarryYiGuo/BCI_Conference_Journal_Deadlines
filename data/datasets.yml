@@ -1,0 +1,1894 @@
+# BCI Datasets · 公开数据集数据文件 / data file
+# ─────────────────────────────────────────────────────────────
+# 字段 / fields:
+#   name / link        数据集名 / 原始源链接
+#   year               发布年份
+#   paradigm           范式: MI 运动想象 | VIS 视觉解码 | EMO 情绪 |
+#                            SPEECH 想象语音 | COG 认知负荷 | SLEEP 睡眠静息 | SPELL ERP/SSVEP
+#   modality           采集模态: EEG | EEG+fNIRS | EEG+fMRI | EEG+周边 | ECoG | PSG | fNIRS
+#   n                  被试数(规模指标)
+#   channels           通道 + 系统;trials 每被试试次
+#   cohort             healthy 健康 | stroke 中风 | clinical 其他临床
+#   era                时代: W1 (2008–2017 经典) | W2 (2017–2022 深度) | W3 (2022–2026 表征对齐)
+#   invasive / consumer  侵入式 / 消费级硬件标记
+#   tags               关键标签;note / note_en 客观说明(中 / 英)
+# ─────────────────────────────────────────────────────────────
+# 整理自 Larry 的「BCI 公开数据集参考手册 v1.3」,按 Paradigm × Modality × Era 三轴。
+# 链接由 check_dataset_links.py 每周做健康检查。
+# ─────────────────────────────────────────────────────────────
+
+# ════════ Wave 1 · 经典 BCI 时代 (2008–2017) ════════
+
+- id: 'bciii2b'
+  name: 'BCI Comp II-IIb (Wadsworth)'
+  link: 'https://www.bbci.de/competition/ii/'
+  year: 2003
+  paradigm: 'SPELL'
+  modality: 'EEG'
+  n: '2'
+  channels: '64'
+  trials: '—'
+  cohort: 'healthy'
+  era: 'W1'
+  invasive: false
+  consumer: false
+  tags: ['P300 经典']
+  note: 'P300 speller 的经典数据,拼写器类研究的历史起点。'
+  note_en: 'The classic P300-speller dataset; historical starting point for speller research.'
+
+- id: 'bciiii'
+  name: 'BCI Comp III-IIIa/IIIb'
+  link: 'https://www.bbci.de/competition/iii/'
+  year: 2005
+  paradigm: 'MI'
+  modality: 'EEG'
+  n: '3 / 3'
+  channels: '60 / 2'
+  trials: '~240'
+  cohort: 'healthy'
+  era: 'W1'
+  invasive: false
+  consumer: false
+  tags: ['老 baseline']
+  note: '更早的 MI 2/3-class 基准,历史对照用。'
+  note_en: 'Older MI 2/3-class benchmark, kept for historical comparison.'
+
+- id: 'bciiv2a'
+  name: 'BCI Competition IV-2a'
+  link: 'https://www.bbci.de/competition/iv/'
+  year: 2008
+  paradigm: 'MI'
+  modality: 'EEG'
+  n: '9'
+  channels: '22 EEG + 3 EOG @250Hz'
+  trials: '288 × 2 sess'
+  cohort: 'healthy'
+  era: 'W1'
+  invasive: false
+  consumer: false
+  tags: ['benchmark', 'MI 必跑']
+  note: '至今 MI 算法的强制 baseline,FBCSP 在此达 kappa 0.569,新 MI 算法不在 2a 上跑没人信。'
+  note_en: 'The mandatory MI baseline; FBCSP reached kappa 0.569 here. No MI method is trusted without 2a results.'
+
+- id: 'bciiv2b'
+  name: 'BCI Competition IV-2b'
+  link: 'https://www.bbci.de/competition/iv/'
+  year: 2008
+  paradigm: 'MI'
+  modality: 'EEG'
+  n: '9'
+  channels: '3 bipolar (C3/Cz/C4)'
+  trials: '~720 / 5 sess'
+  cohort: 'healthy'
+  era: 'W1'
+  invasive: false
+  consumer: false
+  tags: ['benchmark']
+  note: '2-class 左/右手 MI,少通道经典基准,常与 2a 配套使用。'
+  note_en: '2-class left/right-hand MI; a minimal-channel classic baseline, usually paired with 2a.'
+
+- id: 'bciiv1'
+  name: 'BCI Competition IV-1'
+  link: 'https://www.bbci.de/competition/iv/'
+  year: 2008
+  paradigm: 'MI'
+  modality: 'EEG'
+  n: '7'
+  channels: '59'
+  trials: '~200'
+  cohort: 'healthy'
+  era: 'W1'
+  invasive: false
+  consumer: false
+  tags: ['连续控制']
+  note: '含非控期识别,适合连续控制 / 异步 BCI 研究。'
+  note_en: 'Includes non-control periods; suited to continuous-control / asynchronous BCI研究.'
+
+- id: 'eegmmidb'
+  name: 'PhysioNet EEGMMIDB'
+  link: 'https://physionet.org/content/eegmmidb/1.0.0/'
+  year: 2009
+  paradigm: 'MI'
+  modality: 'EEG'
+  n: '109'
+  channels: '64 @160Hz'
+  trials: '~84'
+  cohort: 'healthy'
+  era: 'W1'
+  invasive: false
+  consumer: false
+  tags: ['最大 N', '大 N 预训练']
+  note: '被试量最大的 Wave 1 MI 集,EEGNet 原始论文用此。试次少质量参差,更适合跨被试预训练。'
+  note_en: 'Largest Wave-1 MI set (EEGNet was trained on it). Few trials and uneven quality — better for cross-subject pretraining.'
+
+- id: 'grossewentrup2009'
+  name: 'Grosse-Wentrup 2009 Haptic MI'
+  link: 'https://moabb.neurotechx.com/docs/generated/moabb.datasets.GrosseWentrup2009.html'
+  year: '2009'
+  paradigm: 'MI'
+  modality: 'EEG'
+  n: '10'
+  channels: '128'
+  trials: '300/人'
+  cohort: 'healthy'
+  era: 'W1'
+  invasive: false
+  consumer: false
+  tags: ['高密度 MI']
+  note: '左/右手触觉 MI,128 通道带 3D 电极坐标,MOABB 经典高密度 MI 基准。'
+  note_en: 'Left/right-hand haptic MI at 128 channels with 3D coordinates; a classic high-density MOABB benchmark.'
+
+- id: 'weibo2014'
+  name: 'Weibo 2014 Compound Limb MI'
+  link: 'https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0114853'
+  year: '2014'
+  paradigm: 'MI'
+  modality: 'EEG'
+  n: '10'
+  channels: '60'
+  trials: '560'
+  cohort: 'healthy'
+  era: 'W1'
+  invasive: false
+  consumer: false
+  tags: ['复合 MI']
+  note: '7 类 MI(3 简单肢体 + 3 复合 + 静息),MOABB 多类/复合 MI 标准基准。'
+  note_en: '7-class MI (3 simple, 3 compound limb, rest); a MOABB standard for multi-class / compound MI.'
+
+- id: 'covertovert'
+  name: 'Covert/Overt ERP BCI (BNCI 009-2014)'
+  link: 'https://bnci-horizon-2020.eu/database/data-sets'
+  year: '2014'
+  paradigm: 'SPELL'
+  modality: 'EEG'
+  n: '10'
+  channels: '16'
+  trials: '6 字母矩阵'
+  cohort: 'healthy'
+  era: 'W1'
+  invasive: false
+  consumer: false
+  tags: ['ERP 注意条件']
+  note: 'P300 拼写器隐性 vs 显性注意对照,常与 ALS P300(008)配套做基准。'
+  note_en: 'P300 speller with covert vs overt attention; often paired with the ALS 008 set for benchmarks.'
+
+- id: 'nakanishi_ssvep'
+  name: 'Nakanishi 2015 12-class SSVEP'
+  link: 'https://github.com/mnakanishi/12JFPM_SSVEP'
+  year: '2015'
+  paradigm: 'SPELL'
+  modality: 'EEG'
+  n: '10'
+  channels: '8'
+  trials: '12 目标'
+  cohort: 'healthy'
+  era: 'W1'
+  invasive: false
+  consumer: false
+  tags: ['小基准']
+  note: '被广泛引用的 12 目标 SSVEP 小基准,在线 ITR 与 IT-CCA 方法的标准对照。'
+  note_en: 'Widely cited 12-target SSVEP benchmark; standard for online ITR and IT-CCA methods.'
+
+- id: 'decaf'
+  name: 'DECAF'
+  link: 'https://decaf-dataset.github.io/'
+  year: '2015'
+  paradigm: 'EMO'
+  modality: 'MEG+周边'
+  n: '30'
+  channels: 'MEG + 周边'
+  trials: '情绪'
+  cohort: 'healthy'
+  era: 'W1'
+  invasive: false
+  consumer: false
+  tags: ['MEG 情绪']
+  note: '罕见的 MEG(而非 EEG)情绪数据 + 近红外/ECG/EOG,情感计算跨模态参考。'
+  note_en: 'A rare MEG (not EEG) affect dataset with NIR/ECG/EOG; a cross-modal affective reference.'
+
+- id: 'frank2015'
+  name: 'Frank 2015 N400 ERP (UCL)'
+  link: 'https://www.sciencedirect.com/science/article/pii/S0093934X14001515'
+  year: '2015'
+  paradigm: 'SPEECH'
+  modality: 'EEG'
+  n: '24'
+  channels: '32'
+  trials: '自然句子'
+  cohort: 'healthy'
+  era: 'W1'
+  invasive: false
+  consumer: false
+  tags: ['N400 语言']
+  note: '逐词阅读自然句子的 ERP(N400 等),语言模型 surprisal 与脑活动对齐研究常用。'
+  note_en: 'Word-by-word natural-sentence reading ERPs (N400); common for aligning LM surprisal with brain activity.'
+
+- id: 'tsinghua_ssvep'
+  name: 'Tsinghua Benchmark SSVEP (Wang 2016)'
+  link: 'http://bci.med.tsinghua.edu.cn/download.html'
+  year: '2016'
+  paradigm: 'SPELL'
+  modality: 'EEG'
+  n: '35'
+  channels: '64'
+  trials: '40 目标 JFPM'
+  cohort: 'healthy'
+  era: 'W1'
+  invasive: false
+  consumer: false
+  tags: ['SSVEP 第一基准']
+  note: 'SSVEP 拼写器最常用基准,40 目标联合频相调制,CCA/深度 SSVEP 解码的金标准。'
+  note_en: 'The most-used SSVEP-speller benchmark; 40-target JFPM, the gold standard for CCA / deep SSVEP decoding.'
+
+- id: 'mamem_ssvep'
+  name: 'MAMEM SSVEP (I & II)'
+  link: 'https://www.mamem.eu/results/datasets/'
+  year: '2016'
+  paradigm: 'SPELL'
+  modality: 'EEG'
+  n: '11'
+  channels: '256'
+  trials: '—'
+  cohort: 'healthy'
+  era: 'W1'
+  invasive: false
+  consumer: false
+  tags: ['256 通道']
+  note: '高密度 256 通道 SSVEP,MOABB 收录;频率隔离 vs 同时闪烁两种设计。'
+  note_en: 'High-density 256-channel SSVEP (in MOABB); isolated-frequency vs simultaneous-flicker designs.'
+
+- id: 'zhou2016'
+  name: 'Zhou 2016 Three-Class MI'
+  link: 'https://doi.org/10.1371/journal.pone.0162657'
+  year: '2016'
+  paradigm: 'MI'
+  modality: 'EEG'
+  n: '4'
+  channels: '14'
+  trials: '3 sess'
+  cohort: 'healthy'
+  era: 'W1'
+  invasive: false
+  consumer: false
+  tags: ['跨 session 小集']
+  note: '左/右手/脚三类 MI,跨数天到数月 3 个 session,MOABB 跨 session 小基准。'
+  note_en: 'Left/right hand + feet MI across 3 sessions days-to-months apart; a small MOABB cross-session benchmark.'
+
+- id: 'shin2017'
+  name: 'Shin EEG-NIRS'
+  link: 'https://pubmed.ncbi.nlm.nih.gov/27849545/'
+  year: 2017
+  paradigm: 'MI'
+  modality: 'EEG+fNIRS'
+  n: '29'
+  channels: '30 EEG + 14×2 NIRS'
+  trials: '60'
+  cohort: 'healthy'
+  era: 'W1'
+  invasive: false
+  consumer: false
+  tags: ['混合 BCI 鼻祖', '双模态']
+  note: 'Hybrid BCI 的"祖师爷"数据集,所有 EEG+fNIRS 综述都引它;左/右手 MI vs 心算 vs 静息。'
+  note_en: 'The ancestral hybrid-BCI dataset cited by every EEG+fNIRS review; left/right-hand MI vs mental arithmetic vs rest.'
+
+- id: 'bonn'
+  name: 'Bonn EEG (Andrzejak)'
+  link: 'https://www.ukbonn.de/epileptologie/arbeitsgruppen/ag-lehnertz-neurophysik/downloads/'
+  year: '2001'
+  paradigm: 'CLIN'
+  modality: 'EEG'
+  n: '10'
+  channels: '单通道'
+  trials: '癫痫'
+  cohort: 'epilepsy'
+  era: 'W1'
+  invasive: false
+  consumer: false
+  tags: ['癫痫小基准']
+  note: '波恩大学癫痫 EEG 五子集,癫痫分类的经典小基准。'
+  note_en: 'Bonn five-subset epilepsy EEG; the classic small benchmark for seizure classification.'
+
+- id: 'chbmit'
+  name: 'CHB-MIT Scalp EEG'
+  link: 'https://physionet.org/content/chbmit/1.0.0/'
+  year: '2010'
+  paradigm: 'CLIN'
+  modality: 'EEG'
+  n: '22'
+  channels: '~23'
+  trials: '癫痫发作'
+  cohort: 'epilepsy'
+  era: 'W1'
+  invasive: false
+  consumer: false
+  tags: ['儿童癫痫经典']
+  note: '波士顿儿童医院头皮癫痫 EEG,癫痫发作检测/预测最常用公开集。'
+  note_en: 'Boston Children’s pediatric scalp-seizure EEG; the most-used public set for seizure detection/prediction.'
+
+- id: 'alsp300'
+  name: 'ALS P300 Speller (BNCI 008-2014, Riccio)'
+  link: 'https://bnci-horizon-2020.eu/database/data-sets'
+  year: '2013'
+  paradigm: 'SPELL'
+  modality: 'EEG'
+  n: '8'
+  channels: '8'
+  trials: '—'
+  cohort: 'clinical'
+  era: 'W1'
+  invasive: false
+  consumer: false
+  tags: ['ALS 临床', 'P300']
+  note: 'ALS 患者 P300 拼写器经典数据,目标人群 P300 BCI 评测与跨集合并研究的标准参考,补上 ALS 数据缺口。'
+  note_en: 'Canonical ALS-patient P300-speller data; the reference for target-population P300 BCI — fills the ALS data gap.'
+
+- id: 'shhs'
+  name: 'SHHS (Sleep Heart Health Study)'
+  link: 'https://physionet.org/content/shhpsgdb/1.0.0/'
+  year: '2016'
+  paradigm: 'SLEEP'
+  modality: 'PSG'
+  n: '~5793'
+  channels: 'PSG'
+  trials: '整夜'
+  cohort: 'clinical'
+  era: 'W1'
+  invasive: false
+  consumer: false
+  tags: ['超大 N 睡眠']
+  note: '近 6000 人整夜 PSG,睡眠分期/心血管研究与基础模型预训练的超大数据池。'
+  note_en: '~6000 whole-night PSG records; a very large pool for sleep staging and foundation-model pretraining.'
+
+- id: 'isruc'
+  name: 'ISRUC-Sleep'
+  link: 'https://sleeptight.isr.uc.pt/'
+  year: '2016'
+  paradigm: 'SLEEP'
+  modality: 'PSG'
+  n: '118'
+  channels: 'PSG'
+  trials: '整夜'
+  cohort: 'clinical'
+  era: 'W1'
+  invasive: false
+  consumer: false
+  tags: ['睡眠基准']
+  note: '葡萄牙 ISRUC 整夜 PSG,含健康与睡眠障碍受试,常用睡眠分期基准。'
+  note_en: 'Portuguese whole-night PSG with healthy and sleep-disorder subjects; a common staging benchmark.'
+
+- id: 'tuhsub'
+  name: 'TUH EEG Subsets (TUAB / TUEV / TUSZ)'
+  link: 'https://isip.piconepress.com/projects/nedc/html/tuh_eeg/'
+  year: '2016'
+  paradigm: 'CLIN'
+  modality: 'EEG'
+  n: '2383+'
+  channels: '临床 EEG'
+  trials: '异常/事件/发作'
+  cohort: 'clinical'
+  era: 'W1'
+  invasive: false
+  consumer: false
+  tags: ['基础模型评测']
+  note: 'TUH 子集:TUAB 正常/异常、TUEV 事件、TUSZ 最大开放癫痫发作集,基础模型下游评测标准。'
+  note_en: 'TUH subsets: TUAB normal/abnormal, TUEV events, TUSZ — the largest open seizure set; standard foundation-model downstream evals.'
+
+# ════════ Wave 2 · 深度学习时代 (2017–2022) ════════
+
+- id: 'deap'
+  name: 'DEAP'
+  link: 'http://www.eecs.qmul.ac.uk/mmv/datasets/deap/'
+  year: 2012
+  paradigm: 'EMO'
+  modality: 'EEG+周边'
+  n: '32'
+  channels: '32 EEG + 8 周边'
+  trials: '40×60s 视频'
+  cohort: 'healthy'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['情绪 benchmark', '主观标签']
+  note: '情绪识别最被引数据集,Valence/Arousal 二维 + 多生理。标签为被试自评,主观性强、跨被试一致性差。'
+  note_en: 'The most-cited emotion dataset (Valence/Arousal + peripheral signals). Labels are self-reported — subjective, with poor cross-subject consistency.'
+
+- id: 'mahnob'
+  name: 'MAHNOB-HCI'
+  link: 'https://ibug.doc.ic.ac.uk/resources/mahnob-hci-tagging-database/'
+  year: 2012
+  paradigm: 'EMO'
+  modality: 'EEG+周边'
+  n: '27'
+  channels: '32 EEG + 多生理'
+  trials: '—'
+  cohort: 'healthy'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['多模态全']
+  note: '情绪多模态最全的数据之一,含面部、眼动、多生理信号。'
+  note_en: 'One of the most complete multimodal emotion datasets, with face, eye-gaze and multiple physiological signals.'
+
+- id: 'mass'
+  name: 'MASS'
+  link: 'http://ceams-carsm.ca/mass/'
+  year: 2014
+  paradigm: 'SLEEP'
+  modality: 'PSG'
+  n: '200'
+  channels: '20+ PSG'
+  trials: '—'
+  cohort: 'healthy'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['大 N 睡眠']
+  note: '200 被试 PSG,大规模睡眠分期与预训练数据。'
+  note_en: '200-subject PSG; large-scale sleep-staging and pretraining data.'
+
+- id: 'karaone'
+  name: 'KARA ONE'
+  link: 'http://www.cs.toronto.edu/~complingweb/data/karaOne/karaOne.html'
+  year: 2015
+  paradigm: 'SPEECH'
+  modality: 'EEG+周边'
+  n: '12'
+  channels: '62 + 面部 + 音频'
+  trials: '—'
+  cohort: 'healthy'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['音素分类']
+  note: '内/外说话同步采集 EEG + 面部 + 音频,音素级分类研究常用。'
+  note_en: 'Inner and overt speech with synchronous EEG + face + audio; common for phoneme-level classification.'
+
+- id: 'seed'
+  name: 'SEED / SEED-IV'
+  link: 'https://bcmi.sjtu.edu.cn/home/seed/'
+  year: '2015 / 2018'
+  paradigm: 'EMO'
+  modality: 'EEG'
+  n: '15'
+  channels: '62'
+  trials: '电影片段诱发'
+  cohort: 'healthy'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['SJTU 情绪 benchmark']
+  note: '中文情绪 EEG 标杆,标签清晰(正/中/负 或 4-class)。N 比 DEAP 少但每被试 trial 多、跨 session 重复。'
+  note_en: 'The Chinese emotion-EEG benchmark with cleaner labels (pos/neutral/neg or 4-class). Fewer subjects than DEAP but more trials per subject and repeated sessions.'
+
+- id: 'highgamma'
+  name: 'High-Gamma Dataset'
+  link: 'https://web.gin.g-node.org/robintibor/high-gamma-dataset'
+  year: 2017
+  paradigm: 'MI'
+  modality: 'EEG'
+  n: '14'
+  channels: '128'
+  trials: '~1000 / subj'
+  cohort: 'healthy'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['DeepConvNet 原始集']
+  note: 'DeepConvNet / ShallowConvNet 原始数据集,与 2a 形成"少 N 多 trial"对照,对深度方法重要。'
+  note_en: 'Origin dataset of DeepConvNet / ShallowConvNet; a "few-subjects, many-trials" counterpart to 2a, important for deep methods.'
+
+- id: 'cho2017'
+  name: 'Cho 2017 MI'
+  link: 'http://gigadb.org/dataset/100295'
+  year: 2017
+  paradigm: 'MI'
+  modality: 'EEG'
+  n: '52'
+  channels: '64'
+  trials: '—'
+  cohort: 'healthy'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['跨被试基准']
+  note: '52 被试 2-class MI,常用跨被试泛化基准。'
+  note_en: '52-subject 2-class MI, a common cross-subject generalization benchmark.'
+
+- id: 'dreamer'
+  name: 'DREAMER'
+  link: 'https://zenodo.org/records/546113'
+  year: 2017
+  paradigm: 'EMO'
+  modality: 'EEG+周边'
+  n: '23'
+  channels: '14 + ECG'
+  trials: '—'
+  cohort: 'healthy'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['消费级头戴']
+  note: '消费级 14 通道头戴采集的情绪数据,贴近低成本落地场景。'
+  note_en: 'Emotion data from a consumer-grade 14-channel headset; close to low-cost deployment scenarios.'
+
+- id: 'coretto'
+  name: 'Coretto Imagined Speech'
+  link: 'https://www.spiedigitallibrary.org/conference-proceedings-of-spie/10160/1016002'
+  year: 2017
+  paradigm: 'SPEECH'
+  modality: 'EEG'
+  n: '15'
+  channels: '6'
+  trials: '—'
+  cohort: 'healthy'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['通道少但便携']
+  note: '想象元音 + 词,仅 6 通道,适合便携 / 低通道想象语音研究。'
+  note_en: 'Imagined vowels + words with only 6 channels; suited to portable / low-channel imagined-speech research.'
+
+- id: 'ofner2017'
+  name: 'Ofner 2017 Upper-Limb Movements'
+  link: 'https://doi.org/10.5281/zenodo.834976'
+  year: '2017'
+  paradigm: 'MI'
+  modality: 'EEG'
+  n: '15'
+  channels: '61'
+  trials: '—'
+  cohort: 'healthy'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['上肢运动解码']
+  note: '6 类上肢运动(肘屈伸/腕旋/手开合),执行 + 想象,低频时域 EEG 运动解码的奠基集,贴近假肢控制。'
+  note_en: 'Six sustained upper-limb movements (executed + imagined); foundational for time-domain movement decoding, close to prosthetic control.'
+
+- id: 'seedvig'
+  name: 'SEED-VIG'
+  link: 'https://bcmi.sjtu.edu.cn/home/seed/seed-vig.html'
+  year: '2017'
+  paradigm: 'COG'
+  modality: 'EEG+周边'
+  n: '23'
+  channels: '17 + EOG'
+  trials: '驾驶疲劳'
+  cohort: 'healthy'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['警觉/疲劳']
+  note: '模拟驾驶下的警觉度/疲劳 EEG + EOG,疲劳检测金标数据。'
+  note_en: 'Vigilance/fatigue EEG + EOG under simulated driving; a gold-standard fatigue-detection set.'
+
+- id: 'god'
+  name: 'Generic Object Decoding (Horikawa & Kamitani)'
+  link: 'https://github.com/KamitaniLab/GenericObjectDecoding'
+  year: '2017'
+  paradigm: 'VIS'
+  modality: 'EEG+fMRI'
+  n: '5'
+  channels: 'fMRI'
+  trials: '视觉对象'
+  cohort: 'healthy'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['fMRI 视觉解码原点']
+  note: 'fMRI 视觉对象解码经典(特征解码到 CNN 层),视觉解码社区的 fMRI 端 ground truth 之一。'
+  note_en: 'Classic fMRI visual-object decoding (to CNN features); an fMRI-side ground truth for visual-decoding研究. (fMRI, not EEG)'
+
+- id: 'camcan'
+  name: 'Cam-CAN'
+  link: 'https://www.cam-can.org/'
+  year: '2017'
+  paradigm: 'CLIN'
+  modality: 'MEG+fMRI'
+  n: '~700'
+  channels: 'MEG + MRI'
+  trials: '跨龄'
+  cohort: 'healthy'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['跨龄大队列']
+  note: '剑桥跨龄(18–87 岁)MEG/MRI 大队列,脑龄/老化与跨被试泛化研究的大数据。'
+  note_en: 'Cambridge lifespan (18–87) MEG/MRI cohort; big data for brain-age/ageing and cross-subject generalization.'
+
+- id: 'kaya2018'
+  name: 'Kaya 2018 MI'
+  link: 'https://figshare.com/collections/A_large_electroencephalographic_motor_imagery_dataset_for_electroencephalographic_brain_computer_interfaces/3917698'
+  year: 2018
+  paradigm: 'MI'
+  modality: 'EEG'
+  n: '13'
+  channels: '19'
+  trials: '—'
+  cohort: 'healthy'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['5 子集']
+  note: '含 5 个 MI 子 paradigm,适合多任务 MI 研究。'
+  note_en: 'Contains 5 MI sub-paradigms; suited to multi-task MI研究.'
+
+- id: 'sleepedf'
+  name: 'Sleep-EDF Expanded'
+  link: 'https://physionet.org/content/sleep-edfx/1.0.0/'
+  year: 2018
+  paradigm: 'SLEEP'
+  modality: 'PSG'
+  n: '78'
+  channels: '2 EEG + EOG/EMG'
+  trials: '—'
+  cohort: 'healthy'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['睡眠 benchmark']
+  note: '睡眠分期最常用公开基准,也是 EEG 基础模型预训练的常用大池之一。'
+  note_en: 'The most-used public sleep-staging benchmark, and a common pretraining pool for EEG foundation models.'
+
+- id: 'shin2018'
+  name: 'Shin EEG-NIRS n-back'
+  link: 'https://www.nature.com/articles/sdata20183'
+  year: 2018
+  paradigm: 'COG'
+  modality: 'EEG+fNIRS'
+  n: '26'
+  channels: '30 EEG + 36 NIRS'
+  trials: '0/2/3-back'
+  cohort: 'healthy'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['认知负荷金标', '双模态']
+  note: '工作记忆负荷三档对比,认知负荷估计的金标准 paradigm,同步 fNIRS 提供血流动力学验证。'
+  note_en: 'Three-level working-memory load — the gold-standard paradigm for cognitive-load estimation, with synchronous fNIRS for hemodynamic validation.'
+
+- id: 'amigos'
+  name: 'AMIGOS'
+  link: 'http://www.eecs.qmul.ac.uk/mmv/datasets/amigos/'
+  year: '2018'
+  paradigm: 'EMO'
+  modality: 'EEG+周边'
+  n: '40'
+  channels: '14 + 周边'
+  trials: '短/长视频'
+  cohort: 'healthy'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['多模态情绪', '个性/社交']
+  note: '个体与群体观影下的情绪 + 个性多模态数据(EEG/ECG/GSR + 视频),情感计算常用。'
+  note_en: 'Affect + personality multimodal data under individual/group video watching (EEG/ECG/GSR + video).'
+
+- id: 'ascertain'
+  name: 'ASCERTAIN'
+  link: 'https://ascertain-dataset.github.io/'
+  year: '2018'
+  paradigm: 'EMO'
+  modality: 'EEG+周边'
+  n: '58'
+  channels: '—'
+  trials: '情绪+人格'
+  cohort: 'healthy'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['人格×情绪']
+  note: '情绪与大五人格关联的多模态生理数据(58 被试),研究 personality-aware 情感识别。'
+  note_en: 'Multimodal physiological data linking emotion to Big-Five personality (58 subj).'
+
+- id: 'zuco1'
+  name: 'ZuCo 1.0'
+  link: 'https://osf.io/q3zws/'
+  year: '2018'
+  paradigm: 'SPEECH'
+  modality: 'EEG+周边'
+  n: '12'
+  channels: '128 + 眼动'
+  trials: '自然阅读'
+  cohort: 'healthy'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['EEG-to-text', '阅读+眼动']
+  note: '自然阅读 EEG + 眼动同步,EEG-to-text(如 DeWave)与脑-语言对齐的核心数据。'
+  note_en: 'Natural-reading EEG + eye-tracking; core data for EEG-to-text (e.g. DeWave) and brain-language alignment.'
+
+- id: 'schwarz2018'
+  name: 'Schwarz 2018 Reach-and-Grasp'
+  link: 'https://iopscience.iop.org/article/10.1088/1741-2552/aa8911'
+  year: '2018'
+  paradigm: 'MI'
+  modality: 'EEG'
+  n: '15'
+  channels: '61'
+  trials: '72/条件'
+  cohort: 'healthy'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['抓握类型']
+  note: '三种自然抓握(掌握/侧握/捏握)+ 无动作,Ofner 的执行抓握姊妹集(Müller-Putz 组)。'
+  note_en: 'Three natural grasp types + no-movement; the executed-grasp companion to Ofner (Müller-Putz lab).'
+
+- id: 'openbmi'
+  name: 'OpenBMI / Lee 2019'
+  link: 'http://gigadb.org/dataset/100542'
+  year: 2019
+  paradigm: 'MI'
+  modality: 'EEG'
+  n: '54'
+  channels: '62'
+  trials: '—'
+  cohort: 'healthy'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['大 N MI', '多 paradigm']
+  note: 'MI + ERP + SSVEP 同批被试同步采集,研究 paradigm 互补性与跨任务迁移最干净的数据。'
+  note_en: 'MI + ERP + SSVEP recorded synchronously on the same subjects — the cleanest data for paradigm complementarity and cross-task transfer.'
+
+- id: 'seedv'
+  name: 'SEED-V'
+  link: 'https://bcmi.sjtu.edu.cn/home/seed/seed-v.html'
+  year: '2019'
+  paradigm: 'EMO'
+  modality: 'EEG+周边'
+  n: '16'
+  channels: '62'
+  trials: '5 类情绪'
+  cohort: 'healthy'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['SJTU 情绪扩展']
+  note: 'SEED 家族 5 类情绪扩展(开心/悲伤/恐惧/厌恶/中性)+ 眼动,标签更细。'
+  note_en: 'SEED-family 5-class emotion extension (happy/sad/fear/disgust/neutral) + eye movements.'
+
+- id: 'mped'
+  name: 'MPED'
+  link: 'https://github.com/Tengfei000/MPED'
+  year: '2019'
+  paradigm: 'EMO'
+  modality: 'EEG+周边'
+  n: '23'
+  channels: '62'
+  trials: '7 类情绪'
+  cohort: 'healthy'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['多生理情绪']
+  note: '多模态生理情绪库(EEG/ECG/呼吸/GSR),7 类情绪。'
+  note_en: 'Multi-modal physiological emotion database (EEG/ECG/respiration/GSR), 7 classes.'
+
+- id: 'lemon'
+  name: 'LEMON (MPI Leipzig)'
+  link: 'https://www.nature.com/articles/sdata2018308'
+  year: '2019'
+  paradigm: 'CLIN'
+  modality: 'EEG+fMRI'
+  n: '227'
+  channels: '62'
+  trials: '静息态'
+  cohort: 'healthy'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['大 N 静息态', '预训练']
+  note: '莱比锡 MPI 静息态 EEG + MRI(227 人,含老年),EEG 基础模型预训练与脑龄研究常用。'
+  note_en: 'Leipzig resting-state EEG + MRI (227 subj incl. elderly); common for EEG foundation-model pretraining and brain-age研究.'
+
+- id: 'zuco2'
+  name: 'ZuCo 2.0'
+  link: 'https://osf.io/2urht/'
+  year: '2019'
+  paradigm: 'SPEECH'
+  modality: 'EEG+周边'
+  n: '18'
+  channels: '128 + 眼动'
+  trials: '自然阅读'
+  cohort: 'healthy'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['EEG-to-text']
+  note: 'ZuCo 续作,任务特定 vs 自然阅读对照,EEG-to-text 研究常配 1.0 使用。'
+  note_en: 'ZuCo follow-up with task-specific vs natural reading; usually paired with 1.0 for EEG-to-text研究.'
+
+- id: 'broderick'
+  name: 'Broderick Natural Speech'
+  link: 'https://doi.org/10.5061/dryad.070jc'
+  year: '2019'
+  paradigm: 'SPEECH'
+  modality: 'EEG'
+  n: '19'
+  channels: '128'
+  trials: '自然听觉'
+  cohort: 'healthy'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['听觉追踪']
+  note: '听有声书时的 EEG,自然语音的神经追踪(envelope/TRF)研究奠基集。'
+  note_en: 'EEG while listening to an audiobook; foundational for neural tracking of natural speech (envelope/TRF).'
+
+- id: 'brennan_alice'
+  name: 'Brennan & Hale Alice EEG'
+  link: 'https://deepblue.lib.umich.edu/data/concern/data_sets/bn999738r'
+  year: '2019'
+  paradigm: 'SPEECH'
+  modality: 'EEG'
+  n: '49'
+  channels: '61'
+  trials: '自然听读'
+  cohort: 'healthy'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['自然语言处理']
+  note: '听《爱丽丝》章节的 EEG(49 人),自然语言句法/语义加工的神经计算研究常用。'
+  note_en: 'EEG while listening to a chapter of Alice (49 subj); common for computational study of syntactic/semantic processing.'
+
+- id: 'mous'
+  name: 'Mother of Unification Studies (MOUS)'
+  link: 'https://www.nature.com/articles/s41597-019-0020-y'
+  year: '2019'
+  paradigm: 'SPEECH'
+  modality: 'MEG+fMRI'
+  n: '204'
+  channels: 'MEG + MRI'
+  trials: '语言'
+  cohort: 'healthy'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['大 N 语言 MEG']
+  note: '204 人阅读/听句子的 MEG + fMRI,大规模语言神经数据。'
+  note_en: 'MEG + fMRI from 204 subjects reading/listening to sentences; large-scale language neuroimaging.'
+
+- id: 'bak2019'
+  name: 'Bak 2019 fNIRS Tapping'
+  link: 'https://www.mdpi.com/2079-9292/8/12/1486'
+  year: '2019'
+  paradigm: 'MI'
+  modality: 'fNIRS'
+  n: '30'
+  channels: 'fNIRS'
+  trials: '手/脚 tapping'
+  cohort: 'healthy'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['fNIRS 运动']
+  note: '单侧手指/脚部 tapping 的 fNIRS(30 被试),纯 fNIRS 运动解码常用小集。'
+  note_en: 'Unilateral finger/foot tapping fNIRS (30 subj); a common small set for pure-fNIRS motor decoding.'
+
+- id: 'beta_ssvep'
+  name: 'BETA SSVEP Database (Liu 2020)'
+  link: 'http://bci.med.tsinghua.edu.cn/download.html'
+  year: '2020'
+  paradigm: 'SPELL'
+  modality: 'EEG'
+  n: '70'
+  channels: '64'
+  trials: '40 目标'
+  cohort: 'healthy'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['最大 SSVEP']
+  note: '清华 BETA,迄今最大 SSVEP 基准(70 被试),适合人群规模上评测高 ITR 拼写器。'
+  note_en: 'Tsinghua BETA, the largest SSVEP benchmark (70 subjects); for population-scale evaluation of high-ITR spellers.'
+
+- id: 'kemocon'
+  name: 'K-EmoCon'
+  link: 'https://zenodo.org/records/3762962'
+  year: '2020'
+  paradigm: 'EMO'
+  modality: 'EEG+周边'
+  n: '32'
+  channels: '4'
+  trials: '自然对话'
+  cohort: 'healthy'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['自然辩论场景']
+  note: '自然辩论对话中的连续情绪标注 + 可穿戴生理,贴近真实社交情绪。'
+  note_en: 'Continuous emotion annotation during naturalistic debate + wearable physiology; close to real social affect.'
+
+- id: 'gameemo'
+  name: 'GAMEEMO'
+  link: 'https://data.mendeley.com/datasets/b3pn4kwpmn/3'
+  year: '2020'
+  paradigm: 'EMO'
+  modality: 'EEG'
+  n: '28'
+  channels: '14'
+  trials: '游戏'
+  cohort: 'healthy'
+  era: 'W2'
+  invasive: false
+  consumer: true
+  tags: ['游戏情绪', '消费级']
+  note: '玩不同情绪倾向电脑游戏时的消费级 14 通道情绪 EEG。'
+  note_en: 'Consumer-grade 14-channel emotion EEG while playing emotionally distinct computer games.'
+
+- id: 'erpcore'
+  name: 'ERP CORE (Kappenman 2021)'
+  link: 'https://doi.org/10.1016/j.neuroimage.2020.117465'
+  year: '2021'
+  paradigm: 'SPELL'
+  modality: 'EEG'
+  n: '40'
+  channels: '30'
+  trials: '7 components'
+  cohort: 'healthy'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['ERP 标准集']
+  note: '事实标准的开放 ERP 资源:N170/MMN/N2pc/N400/P3b/LRP/ERN 七大成分 + 完整 pipeline。'
+  note_en: 'The de-facto open ERP resource: seven components (N170, MMN, N2pc, N400, P3b, LRP, ERN) with full pipelines.'
+
+- id: 'stieger2021'
+  name: 'Stieger 2021 SMR-BCI Learning'
+  link: 'https://doi.org/10.6084/m9.figshare.13123148'
+  year: '2021'
+  paradigm: 'MI'
+  modality: 'EEG'
+  n: '62'
+  channels: '64'
+  trials: '7–11 sess'
+  cohort: 'healthy'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['大 N 纵向', 'BCI learning']
+  note: '唯一大规模纵向 MI-BCI 学习数据(62 被试 × 7–11 次,>600h 在线光标控制),研究 BCI 学习/SMR/迁移的核心集。'
+  note_en: 'The only large longitudinal MI-BCI learning dataset (62 subj × 7–11 sessions, >600h online cursor control); core for BCI-learning / SMR / transfer研究.'
+
+- id: 'chbmp'
+  name: 'CHBMP (Cuban Human Brain Mapping)'
+  link: 'https://www.nature.com/articles/s41597-020-00779-6'
+  year: '2021'
+  paradigm: 'CLIN'
+  modality: 'EEG+fMRI'
+  n: '282'
+  channels: 'EEG + MRI/MEG'
+  trials: '静息态'
+  cohort: 'healthy'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['多模态静息']
+  note: '古巴人脑图谱计划 282 人静息态 EEG + MRI,跨人群规模化静息态参考。'
+  note_en: 'Cuban Human Brain Mapping resting-state EEG + MRI over 282 subjects; a cross-population resting reference.'
+
+- id: 'tufts_fnirs'
+  name: 'Tufts fNIRS Mental Workload (fNIRS2MW)'
+  link: 'https://tufts-hci-lab.github.io/code_and_datasets/fNIRS2MW.html'
+  year: '2021'
+  paradigm: 'COG'
+  modality: 'fNIRS'
+  n: '68'
+  channels: 'fNIRS'
+  trials: 'n-back'
+  cohort: 'healthy'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['fNIRS 认知负荷大集']
+  note: '68 人 n-back 的 fNIRS 认知负荷数据,纯 fNIRS 工作记忆负荷最大公开集之一。'
+  note_en: 'fNIRS mental-workload data from 68 subjects (n-back); one of the largest pure-fNIRS workload sets.'
+
+- id: 'nieto2022'
+  name: 'Inner Speech / Nieto 2022'
+  link: 'https://www.nature.com/articles/s41597-022-01147-2'
+  year: 2022
+  paradigm: 'SPEECH'
+  modality: 'EEG'
+  n: '10'
+  channels: '136'
+  trials: '4 词 × 3 条件'
+  cohort: 'healthy'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['inner speech 首个公开集', 'BIDS']
+  note: '内在语音 paradigm 第一个公开 EEG 数据集(西班牙语),inner / pronounced / visualized 三条件可对比,OpenNeuro BIDS 标准。'
+  note_en: 'First public inner-speech EEG dataset (Spanish); inner / pronounced / visualized conditions enable paradigm comparison; OpenNeuro BIDS.'
+
+- id: 'tuheeg'
+  name: 'TUH EEG Corpus'
+  link: 'https://isip.piconepress.com/projects/tuh_eeg/'
+  year: 2016
+  paradigm: 'SLEEP'
+  modality: 'EEG'
+  n: '~70k records'
+  channels: '临床 EEG'
+  trials: '—'
+  cohort: 'clinical'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['最大开放 EEG', '预训练大池']
+  note: '约 7 万条临床 EEG 记录,目前最大的开放 EEG 数据池,是 LaBraM/BIOT/Brant 等基础模型预训练的核心来源。'
+  note_en: '~70k clinical EEG records — the largest open EEG pool, a core pretraining source for LaBraM, BIOT, Brant and other foundation models.'
+
+- id: 'physio2018'
+  name: 'Physio2018 (You Snooze You Win)'
+  link: 'https://physionet.org/content/challenge-2018/1.0.0/'
+  year: '2018'
+  paradigm: 'SLEEP'
+  modality: 'PSG'
+  n: '1983'
+  channels: 'PSG'
+  trials: '整夜'
+  cohort: 'clinical'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['挑战赛集']
+  note: 'PhysioNet/CinC 2018 挑战赛睡眠数据(994 公开训练),唤醒检测与分期常用。'
+  note_en: 'PhysioNet/CinC 2018 Challenge sleep data (994 public train); common for arousal detection and staging.'
+
+- id: 'kaimiller_ecog'
+  name: 'Stanford ECoG Library (Kai Miller)'
+  link: 'https://searchworks.stanford.edu/view/zk881ps0522'
+  year: '2019'
+  paradigm: 'CLIN'
+  modality: 'ECoG'
+  n: '34'
+  channels: 'ECoG'
+  trials: '16 范式'
+  cohort: 'clinical'
+  era: 'W2'
+  invasive: true
+  consumer: false
+  tags: ['ECoG 大库']
+  note: '34 名患者、16 种范式、204 个 ECoG 数据集的开放库,侵入式 BCI 多任务参考。'
+  note_en: 'An open library of 204 ECoG datasets across 34 patients and 16 paradigms; a multi-task invasive-BCI reference.'
+
+- id: 'brain2char'
+  name: 'Brain2Char (UCSF ECoG speech-to-text)'
+  link: 'https://arxiv.org/abs/1909.01401'
+  year: '2019'
+  paradigm: 'SPEECH'
+  modality: 'ECoG'
+  n: '3'
+  channels: 'ECoG'
+  trials: '语音转文字'
+  cohort: 'clinical'
+  era: 'W2'
+  invasive: true
+  consumer: false
+  tags: ['ECoG speech-to-text']
+  note: 'UCSF ECoG 端到端语音转文字(3 参与者),侵入式语音 BCI 方法参考。'
+  note_en: 'UCSF end-to-end ECoG speech-to-text (3 participants); a method reference for invasive speech BCI.'
+
+- id: 'dreem'
+  name: 'DOD-H / DOD-O (Dreem)'
+  link: 'https://github.com/Dreem-Organization/dreem-learning-open'
+  year: '2020'
+  paradigm: 'SLEEP'
+  modality: 'PSG'
+  n: '81'
+  channels: '干电极 PSG'
+  trials: '整夜'
+  cohort: 'clinical'
+  era: 'W2'
+  invasive: false
+  consumer: true
+  tags: ['消费级睡眠']
+  note: 'Dreem 开放数据,干电极头带 PSG(健康 DOD-H + OSA DOD-O),消费级睡眠分期参考。'
+  note_en: 'Dreem open datasets, dry-electrode PSG (healthy DOD-H + OSA DOD-O); a consumer-grade staging reference.'
+
+- id: 'siena'
+  name: 'Siena Scalp EEG'
+  link: 'https://physionet.org/content/siena-scalp-eeg/1.0.0/'
+  year: '2020'
+  paradigm: 'CLIN'
+  modality: 'EEG'
+  n: '14'
+  channels: 'EEG + EKG'
+  trials: '癫痫发作'
+  cohort: 'epilepsy'
+  era: 'W2'
+  invasive: false
+  consumer: false
+  tags: ['成人癫痫']
+  note: '锡耶纳成人癫痫监测 EEG,补充 CHB-MIT 的成人样本。'
+  note_en: 'Siena adult epilepsy-monitoring EEG; an adult complement to CHB-MIT.'
+
+- id: 'epilepsyieeg'
+  name: 'Epilepsy-iEEG Multicenter (Fragility)'
+  link: 'https://openneuro.org/datasets/ds003029'
+  year: '2021'
+  paradigm: 'CLIN'
+  modality: 'ECoG'
+  n: '~100'
+  channels: 'iEEG'
+  trials: '癫痫发作'
+  cohort: 'epilepsy'
+  era: 'W2'
+  invasive: true
+  consumer: false
+  tags: ['多中心 iEEG']
+  note: '多中心 iEEG 癫痫数据(~100 患者),发作区定位/fragility 方法基准。'
+  note_en: 'Multi-center iEEG epilepsy data (~100 patients); a benchmark for seizure-onset localization / fragility methods.'
+
+- id: 'ieegmemory'
+  name: 'Human iEEG Memory + Pupillometry'
+  link: 'https://www.nature.com/articles/s41597-021-01099-z'
+  year: '2021'
+  paradigm: 'COG'
+  modality: 'ECoG'
+  n: '10'
+  channels: 'iEEG'
+  trials: '记忆任务'
+  cohort: 'clinical'
+  era: 'W2'
+  invasive: true
+  consumer: false
+  tags: ['记忆 iEEG']
+  note: '10 患者记忆任务 iEEG + 瞳孔测量,记忆与认知状态侵入式研究。'
+  note_en: 'iEEG + pupillometry during memory tasks (10 patients); for invasive memory / cognitive-state research.'
+
+# ════════ Wave 3 · 表征对齐时代 (2022–2026) ════════
+
+- id: 'eegimagenet'
+  name: 'EEG-ImageNet (Spampinato)'
+  link: 'https://github.com/perceivelab/eeg_visual_classification'
+  year: '2017+'
+  paradigm: 'VIS'
+  modality: 'EEG'
+  n: '6'
+  channels: '128'
+  trials: '~2k / subj'
+  cohort: 'healthy'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['label leakage 争议']
+  note: '早期 EEG-to-image 常用,但存在 block-design label leakage 争议(Li 2020 / Ahmed 2021)。不要单独用,必须配 THINGS-EEG2 或 Alljoined。'
+  note_en: 'Widely used in early EEG-to-image work but has a block-design label-leakage controversy (Li 2020 / Ahmed 2021). Never use it alone — always pair with THINGS-EEG2 or Alljoined.'
+
+- id: 'midistraction'
+  name: 'MI Under Distraction'
+  link: 'https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2020.566147/full'
+  year: 2020
+  paradigm: 'MI'
+  modality: 'EEG'
+  n: '37'
+  channels: '62'
+  trials: '—'
+  cohort: 'healthy'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['真实场景']
+  note: 'MI + 干扰任务,贴近真实使用场景的鲁棒性评测数据。'
+  note_en: 'MI with a distractor task — robustness-evaluation data close to real-world use.'
+
+- id: 'thingseeg1'
+  name: 'THINGS-EEG1 (Grootswagers)'
+  link: 'https://www.nature.com/articles/s41597-021-01102-7'
+  year: 2022
+  paradigm: 'VIS'
+  modality: 'EEG'
+  n: '50'
+  channels: '64'
+  trials: '22k+ / subj'
+  cohort: 'healthy'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['RSVP 50ms']
+  note: '大规模视觉对象 RSVP(50ms),THINGS 图像库,视觉解码的广覆盖数据。'
+  note_en: 'Large-scale visual-object RSVP (50ms) over the THINGS image set; broad-coverage visual-decoding data.'
+
+- id: 'thingseeg2'
+  name: 'THINGS-EEG2 (Gifford)'
+  link: 'https://osf.io/3jk45/'
+  year: 2022
+  paradigm: 'VIS'
+  modality: 'EEG'
+  n: '10'
+  channels: '64'
+  trials: '~82k / subj'
+  cohort: 'healthy'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['CLIP 对齐 SOTA baseline']
+  note: 'Wave 3 视觉解码 SOTA 共识 baseline。ATM/NICE/BrainMosaic/EEGFormer 等表征对齐论文几乎全在此跑。'
+  note_en: 'The consensus SOTA baseline for Wave-3 visual decoding; ATM, NICE, BrainMosaic, EEGFormer and most alignment papers run on it.'
+
+- id: 'ma2022mi'
+  name: 'Ma 2022 Cross-Session MI (5 days)'
+  link: 'https://www.nature.com/articles/s41597-022-01647-1'
+  year: '2022'
+  paradigm: 'MI'
+  modality: 'EEG'
+  n: '25'
+  channels: '65'
+  trials: '5 sess'
+  cohort: 'healthy'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['跨天 session']
+  note: '首个跨 5 天的大型 MI 公开集(25 被试 × 5 次),专为研究跨 session 变异性而建。'
+  note_en: 'First large open MI dataset spanning 5 different days; built to study cross-session variability.'
+
+- id: 'nsd'
+  name: 'Natural Scenes Dataset (NSD)'
+  link: 'https://naturalscenesdataset.org/'
+  year: '2022'
+  paradigm: 'VIS'
+  modality: 'EEG+fMRI'
+  n: '8'
+  channels: '7T fMRI'
+  trials: '自然场景'
+  cohort: 'healthy'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['fMRI 视觉 ground-truth']
+  note: '7T fMRI 大规模自然场景(NSD),视觉重建/解码的 fMRI 端 ground truth,可作 EEG 蒸馏上游。'
+  note_en: 'Large-scale 7T fMRI natural scenes; the fMRI ground truth for visual reconstruction/decoding, usable as upstream for EEG distillation. (fMRI, not EEG)'
+
+- id: 'seedger'
+  name: 'SEED-GER'
+  link: 'https://bcmi.sjtu.edu.cn/home/seed/'
+  year: '2022'
+  paradigm: 'EMO'
+  modality: 'EEG+周边'
+  n: '8'
+  channels: '62'
+  trials: '德语电影'
+  cohort: 'healthy'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['跨文化情绪']
+  note: 'SEED 德语版,跨文化情绪 EEG 对照(配 SEED-FRA)。'
+  note_en: 'German-language SEED for cross-cultural emotion comparison (with SEED-FRA).'
+
+- id: 'seedfra'
+  name: 'SEED-FRA'
+  link: 'https://bcmi.sjtu.edu.cn/home/seed/'
+  year: '2022'
+  paradigm: 'EMO'
+  modality: 'EEG+周边'
+  n: '8'
+  channels: '62'
+  trials: '法语电影'
+  cohort: 'healthy'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['跨文化情绪']
+  note: 'SEED 法语版,跨文化/跨语言情绪解码对照。'
+  note_en: 'French-language SEED for cross-cultural/cross-lingual emotion decoding.'
+
+- id: 'dens'
+  name: 'DENS (Naturalistic Stimuli Emotion)'
+  link: 'https://www.nature.com/articles/s41597-022-01831-3'
+  year: '2022'
+  paradigm: 'EMO'
+  modality: 'EEG+周边'
+  n: '40'
+  channels: '128'
+  trials: '自然刺激'
+  cohort: 'healthy'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['自然刺激情绪']
+  note: '自然刺激诱发的高密度情绪 EEG(40 被试,128 通道),含精细情绪事件时刻标注。'
+  note_en: 'Naturalistic-stimulus high-density emotion EEG (40 subj, 128 ch) with fine-grained emotional-event timing.'
+
+- id: 'armeni2022'
+  name: 'Armeni 2022 Audiobook MEG'
+  link: 'https://www.nature.com/articles/s41597-022-01382-7'
+  year: '2022'
+  paradigm: 'SPEECH'
+  modality: 'MEG'
+  n: '3'
+  channels: 'MEG'
+  trials: '10×1h'
+  cohort: 'healthy'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['深度单被试 MEG']
+  note: '3 被试各 10 次 1 小时听有声书 MEG,深度 within-subject 语言解码数据。'
+  note_en: '3 subjects × ten 1-hour audiobook-listening MEG sessions; deep within-subject language-decoding data.'
+
+- id: 'wilson2023'
+  name: 'Wilson Semantic Concepts'
+  link: 'https://www.nature.com/articles/s41597-023-02416-4'
+  year: 2023
+  paradigm: 'VIS'
+  modality: 'EEG'
+  n: '22'
+  channels: '128'
+  trials: '想象 + 感知'
+  cohort: 'healthy'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['想象 vs 感知对照']
+  note: '罕见的"同被试同概念,想象 vs 感知"对照设计,适合研究无视觉刺激下能否解码语义。'
+  note_en: 'A rare "same subject, same concept, imagery vs perception" design; useful for decoding semantics without visual stimulus.'
+
+- id: 'chenstroop'
+  name: 'EEG-fNIRS Stroop (Chen)'
+  link: 'https://www.nature.com/articles/s41597-023-02524-1'
+  year: 2023
+  paradigm: 'COG'
+  modality: 'EEG+fNIRS'
+  n: '21'
+  channels: '34 EEG @1000Hz + 20 fNIRS'
+  trials: '—'
+  cohort: 'healthy'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['认知控制', '双模态']
+  note: '额叶 Stroop 冲突 paradigm,认知控制清洁数据,fNIRS 提供前额叶血氧定位。'
+  note_en: 'Frontal Stroop-conflict paradigm — clean cognitive-control data with fNIRS giving prefrontal oxygenation localization.'
+
+- id: 'eegfmri'
+  name: 'Bimodal EEG-fMRI Inner Speech'
+  link: 'https://www.nature.com/articles/s41597-023-02286-w'
+  year: 2023
+  paradigm: 'SPEECH'
+  modality: 'EEG+fMRI'
+  n: '4'
+  channels: 'EEG + fMRI 非同步'
+  trials: '社交 vs 数字词'
+  cohort: 'healthy'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['cross-modal teacher']
+  note: '被试极少但是少数公开 EEG+fMRI 配对内在语音数据,适合做 fMRI→EEG cross-modal distillation 的起点。'
+  note_en: 'Very few subjects, but one of few public EEG+fMRI paired inner-speech datasets — a starting point for fMRI→EEG cross-modal distillation.'
+
+- id: 'dreyer2023'
+  name: 'Dreyer 2023 Large MI Database'
+  link: 'https://zenodo.org/records/8089820'
+  year: '2023'
+  paradigm: 'MI'
+  modality: 'EEG'
+  n: '87'
+  channels: '27'
+  trials: '>20800 trials'
+  cohort: 'healthy'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['最大单次 MI', '含用户画像']
+  note: '最大的单次 MI 数据库之一(87 被试,~70h),左/右手 MI + 丰富的人口学/性格/认知元数据,MOABB 收录。'
+  note_en: 'One of the largest single-session MI databases (87 subj, ~70h) with rich demographic/personality metadata; in MOABB.'
+
+- id: 'faced'
+  name: 'FACED'
+  link: 'https://www.synapse.org/Synapse:syn50614194'
+  year: '2023'
+  paradigm: 'EMO'
+  modality: 'EEG'
+  n: '123'
+  channels: '32'
+  trials: '9 类情绪'
+  cohort: 'healthy'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['大 N 细粒度情绪']
+  note: '123 被试细粒度情绪 EEG(9 类),目前最大的情绪 EEG 集之一,适合跨被试与预训练。'
+  note_en: 'Fine-grained emotion EEG over 123 subjects (9 classes); one of the largest emotion-EEG sets, good for cross-subject and pretraining.'
+
+- id: 'thingsmeg'
+  name: 'THINGS-MEG'
+  link: 'https://elifesciences.org/articles/82580'
+  year: '2023'
+  paradigm: 'VIS'
+  modality: 'MEG'
+  n: '4'
+  channels: 'MEG'
+  trials: 'THINGS 图像'
+  cohort: 'healthy'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['MEG 视觉解码']
+  note: 'THINGS 图像库的 MEG 版,视觉解码的高时间分辨率对照,与 THINGS-EEG 互补。'
+  note_en: 'MEG counterpart over the THINGS image set; a high-temporal-resolution complement to THINGS-EEG.'
+
+- id: 'megmasc'
+  name: 'MEG-MASC'
+  link: 'https://www.nature.com/articles/s41597-023-02752-5'
+  year: '2023'
+  paradigm: 'SPEECH'
+  modality: 'MEG'
+  n: '27'
+  channels: 'MEG'
+  trials: '自然语音'
+  cohort: 'healthy'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['自然语音 MEG']
+  note: '27 人听自然语音的 MEG(对齐到词/音素),脑-语言对齐与语音解码常用。'
+  note_en: 'MEG from 27 subjects listening to natural speech (word/phoneme-aligned); common for brain-language alignment and speech decoding.'
+
+- id: 'alljoined1'
+  name: 'Alljoined1'
+  link: 'https://arxiv.org/abs/2404.05553'
+  year: 2024
+  paradigm: 'VIS'
+  modality: 'EEG'
+  n: '8'
+  channels: '64'
+  trials: '~10k / subj'
+  cohort: 'healthy'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['长 SOA 设计']
+  note: 'MS-COCO 自然图,长 SOA 设计,Alljoined-1.6M 的前作。'
+  note_en: 'MS-COCO natural images with a long-SOA design; predecessor of Alljoined-1.6M.'
+
+- id: 'chisco'
+  name: 'Chisco'
+  link: 'https://www.nature.com/articles/s41597-024-04114-1'
+  year: 2024
+  paradigm: 'SPEECH'
+  modality: 'EEG'
+  n: '3'
+  channels: '122'
+  trials: '~20k / subj'
+  cohort: 'healthy'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['中文短语']
+  note: '中文想象语音 BCI 数据,少被试但每被试试次极多,适合 subject-specific 解码。'
+  note_en: 'Chinese imagined-speech BCI data; few subjects but very many trials each — suited to subject-specific decoding.'
+
+- id: 'altstroop'
+  name: 'High-Altitude Stroop'
+  link: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11001964/'
+  year: 2024
+  paradigm: 'COG'
+  modality: 'EEG+fNIRS'
+  n: '80'
+  channels: 'EEG + fNIRS'
+  trials: '120'
+  cohort: 'healthy'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['domain shift']
+  note: '4500m vs 800m 海拔的 Stroop 对比,天然 domain-shift 样本,适合域适应研究。'
+  note_en: 'Stroop at 4500m vs 800m altitude — a natural domain-shift sample, good for domain-adaptation研究.'
+
+- id: 'vismotiv'
+  name: 'Visual Cognitive Motivation'
+  link: 'https://www.sciencedirect.com/science/article/pii/S2352340924002294'
+  year: 2024
+  paradigm: 'COG'
+  modality: 'EEG+fNIRS'
+  n: '16'
+  channels: 'EEG + fNIRS 共址'
+  trials: '—'
+  cohort: 'healthy'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['多模态决策']
+  note: '视觉决策 + 动机 paradigm,EEG/fNIRS 共址采集。'
+  note_en: 'Visual-decision + motivation paradigm with co-located EEG/fNIRS.'
+
+- id: 'forenzo2024'
+  name: 'Forenzo/He 2024 Continuous-Pursuit MI'
+  link: 'https://www.nature.com/articles/s41597-024-04090-6'
+  year: '2024'
+  paradigm: 'MI'
+  modality: 'EEG'
+  n: '28'
+  channels: '64'
+  trials: '~168h'
+  cohort: 'healthy'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['在线 DL-BCI']
+  note: '~168h 在线连续追踪 MI 光标控制(深度解码器,CMU 何斌组),罕见的在线深度 BCI 数据。'
+  note_en: '~168h of online continuous-pursuit MI cursor control with a deep decoder (Bin He / CMU); a rare online DL-BCI dataset.'
+
+- id: 'seedvii'
+  name: 'SEED-VII'
+  link: 'https://bcmi.sjtu.edu.cn/home/seed/'
+  year: '2024'
+  paradigm: 'EMO'
+  modality: 'EEG+周边'
+  n: '20'
+  channels: '62'
+  trials: '7 类情绪'
+  cohort: 'healthy'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['最新 SEED']
+  note: 'SEED 家族最新 7 类情绪集(2024),含眼动多模态。'
+  note_en: 'The newest SEED 7-class emotion set (2024) with multimodal eye-tracking.'
+
+- id: 'hbneeg'
+  name: 'HBN-EEG (Healthy Brain Network)'
+  link: 'https://neuromechanist.github.io/data/hbn/'
+  year: '2024'
+  paradigm: 'CLIN'
+  modality: 'EEG'
+  n: '2600+'
+  channels: '128'
+  trials: '多任务'
+  cohort: 'healthy'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['超大儿童 EEG']
+  note: '儿童青少年大规模 EEG(目标 ~5000 人,多任务,BIDS),最大的发育期 EEG 资源之一。'
+  note_en: 'Large-scale child/adolescent EEG (target ~5000, multi-task, BIDS); one of the largest developmental EEG resources.'
+
+- id: 'eav'
+  name: 'EAV (EEG-Audio-Video)'
+  link: 'https://www.nature.com/articles/s41597-024-03838-4'
+  year: '2024'
+  paradigm: 'EMO'
+  modality: 'EEG+周边'
+  n: '42'
+  channels: '30'
+  trials: '对话'
+  cohort: 'healthy'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['对话三模态']
+  note: '对话场景下 EEG + 音频 + 视频三模态情绪数据(42 被试),多模态情感对齐。'
+  note_en: 'Conversation-scenario EEG + audio + video tri-modal emotion data (42 subj); for multimodal affect alignment.'
+
+- id: 'alljoined16m'
+  name: 'Alljoined-1.6M'
+  link: 'https://arxiv.org/abs/2508.18571'
+  year: 2025
+  paradigm: 'VIS'
+  modality: 'EEG'
+  n: '20'
+  channels: '32 (消费级)'
+  trials: '~80k / subj'
+  cohort: 'healthy'
+  era: 'W3'
+  invasive: false
+  consumer: true
+  tags: ['迄今最大', '消费级']
+  note: '被试是 THINGS-EEG2 的两倍但用消费级头戴,回答"廉价硬件能否做 SOTA 解码",对商业化落地天花板意义重大。'
+  note_en: 'Twice the subjects of THINGS-EEG2 but on a consumer headset — it answers whether cheap hardware can do SOTA decoding, key to the commercialization ceiling.'
+
+- id: 'multijoint'
+  name: '多关节上肢 MI'
+  link: 'https://www.nature.com/articles/s41597-025-05286-0'
+  year: 2025
+  paradigm: 'MI'
+  modality: 'EEG+fNIRS'
+  n: '18'
+  channels: 'EEG + fNIRS'
+  trials: '320 (8 类)'
+  cohort: 'healthy'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['多自由度']
+  note: '手/腕/肘/肩四类关节同侧上肢精细 MI(8 类),直接对应假肢多自由度控制,比 2a 现实得多。'
+  note_en: 'Fine-grained ipsilateral upper-limb MI over hand/wrist/elbow/shoulder (8 classes) — maps directly to multi-DoF prosthetic control, far more realistic than 2a.'
+
+- id: 'lowerlimbfnirs'
+  name: 'Lower-limb MI fNIRS'
+  link: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12714601/'
+  year: 2025
+  paradigm: 'MI'
+  modality: 'fNIRS'
+  n: '—'
+  channels: 'fNIRS only'
+  trials: '—'
+  cohort: 'healthy'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['下肢康复']
+  note: '膝/踝 MI(纯 fNIRS),下肢康复方向数据。'
+  note_en: 'Knee/ankle MI (fNIRS only); lower-limb rehabilitation data.'
+
+- id: 'algonauts'
+  name: 'Algonauts Project'
+  link: 'http://algonauts.csail.mit.edu/'
+  year: '2025'
+  paradigm: 'VIS'
+  modality: 'EEG+fMRI'
+  n: '10'
+  channels: 'fMRI/MEG'
+  trials: '自然视频'
+  cohort: 'healthy'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['竞赛/视频刺激']
+  note: '提供 fMRI/MEG 配对自然视频刺激的系列竞赛,视觉编码模型对齐的上游资源。'
+  note_en: 'A challenge series with fMRI/MEG paired natural-video stimuli; upstream for visual encoding-model alignment. (fMRI/MEG)'
+
+- id: 'libribrain'
+  name: 'LibriBrain (PNPL)'
+  link: 'https://arxiv.org/abs/2506.02098'
+  year: '2025'
+  paradigm: 'SPEECH'
+  modality: 'MEG'
+  n: '1'
+  channels: 'MEG'
+  trials: '>50h'
+  cohort: 'healthy'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['超长单被试 MEG']
+  note: '单被试 >50h 听有声书的 MEG,within-subject 语音解码与"脑 GPT"式大数据范式。'
+  note_en: '>50h within-subject MEG listening to audiobooks; a large within-subject paradigm for speech decoding.'
+
+- id: 'yang2025wrc'
+  name: 'Yang 2025 Multi-Day MI (WRC 2019)'
+  link: 'https://www.nature.com/articles/s41597-025-04826-y'
+  year: '2025'
+  paradigm: 'MI'
+  modality: 'EEG'
+  n: '62'
+  channels: '59'
+  trials: '3 sess'
+  cohort: 'healthy'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['多天大 N']
+  note: '源自 2019 世界机器人大会 BCI 赛,62 被试 × 3 次,2 类/3 类 MI,近期多天大基准。'
+  note_en: 'From the 2019 World Robot Conference BCI contest; 62 subj × 3 sessions, 2-/3-class MI — a recent multi-day benchmark.'
+
+- id: 'ulrehab2025'
+  name: 'Multi-Paradigm Upper-Limb Rehab EEG'
+  link: 'https://www.nature.com/articles/s41597-025-06147-6'
+  year: '2025'
+  paradigm: 'MI'
+  modality: 'EEG'
+  n: '28'
+  channels: '—'
+  trials: '6 任务'
+  cohort: 'healthy'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['多任务上肢']
+  note: '同批 28 被试六种上肢康复任务(MI/执行/观察等),多 paradigm 上肢康复集。'
+  note_en: 'Same 28 subjects across six upper-limb rehab tasks (MI / execution / observation); a multi-paradigm rehab set.'
+
+- id: 'megscans'
+  name: 'MEG-SCANS'
+  link: 'https://openneuro.org/datasets/ds006468'
+  year: '2025'
+  paradigm: 'SPEECH'
+  modality: 'MEG'
+  n: '24'
+  channels: 'MEG'
+  trials: '故事/句子'
+  cohort: 'healthy'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['德语自然听觉 MEG']
+  note: '德语故事/啁啾/含噪句子的自然听觉 MEG(24 被试),语音神经追踪。'
+  note_en: 'German stories / chirps / noisy sentences natural-listening MEG (24 subj); for speech neural tracking.'
+
+- id: 'littleprince_meg'
+  name: 'Little Prince MEG (French)'
+  link: 'https://openneuro.org/datasets/ds007523'
+  year: '2025'
+  paradigm: 'SPEECH'
+  modality: 'MEG'
+  n: '—'
+  channels: 'MEG'
+  trials: '自然听读'
+  cohort: 'healthy'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['自然语言 MEG']
+  note: '听《小王子》的法语自然语言 MEG(Pallier 组,OpenNeuro),与 EEG/fMRI 版互补。'
+  note_en: 'French Little Prince natural-language MEG (Pallier lab, OpenNeuro); complements EEG/fMRI versions.'
+
+- id: 'mind'
+  name: 'MIND (4-direction MI)'
+  link: 'https://arxiv.org/abs/2602.04299'
+  year: 2026
+  paradigm: 'MI'
+  modality: 'EEG+fNIRS'
+  n: '30'
+  channels: '64 EEG + 51 fNIRS'
+  trials: '120'
+  cohort: 'healthy'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['多模态 4-DoF', '假肢方向']
+  note: '单上肢 4 方向 MI,与上肢闭环假肢控制场景对齐度最高的近期数据;30×120 试次足以训 transformer backbone。'
+  note_en: '4-direction unilateral upper-limb MI — the recent dataset best aligned with closed-loop prosthetic control; 30×120 trials suffice to train a transformer backbone.'
+
+- id: 'stanfordecog'
+  name: 'Stanford Speech ECoG (Anumanchipalli 2019)'
+  link: 'https://www.nature.com/articles/s41586-019-1119-1'
+  year: 2019
+  paradigm: 'SPEECH'
+  modality: 'ECoG'
+  n: '小 N (患者)'
+  channels: 'ECoG'
+  trials: '—'
+  cohort: 'clinical'
+  era: 'W3'
+  invasive: true
+  consumer: false
+  tags: ['侵入', '语音解码经典']
+  note: '侵入式语音解码经典(Nature 2019),单患者长期记录,适合 subject-specific 深度模型。'
+  note_en: 'A classic invasive speech-decoding study (Nature 2019); long single-patient recordings, suited to subject-specific deep models.'
+
+- id: 'changlab'
+  name: 'Chang Lab Speech Neuroprosthesis (Willett 2023)'
+  link: 'https://www.nature.com/articles/s41586-023-06443-4'
+  year: 2023
+  paradigm: 'SPEECH'
+  modality: 'ECoG'
+  n: '患者'
+  channels: 'ECoG'
+  trials: '—'
+  cohort: 'clinical'
+  era: 'W3'
+  invasive: true
+  consumer: false
+  tags: ['侵入', '高性能语音 BCI']
+  note: '高性能侵入式语音 BCI(Nature 2023),语音神经假体里程碑。'
+  note_en: 'High-performance invasive speech BCI (Nature 2023); a milestone in speech neuroprostheses.'
+
+- id: 'strokemi2024'
+  name: 'Stroke MI (Xuanwu / Liu 2024)'
+  link: 'https://www.nature.com/articles/s41597-023-02787-8'
+  year: 2024
+  paradigm: 'MI'
+  modality: 'EEG'
+  n: '50 急性中风'
+  channels: '无线便携盐水电极'
+  trials: '发病 1–30 天'
+  cohort: 'stroke'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['SOTA 掉一半', '落地必看']
+  note: '首个公开急性中风期 MI 数据集,基线仅 72.21%(健康常 90%+)——衡量 domain shift 的尺子。'
+  note_en: 'First public acute-stroke MI dataset; baseline only 72.21% (vs 90%+ on healthy) — a ruler for domain shift.'
+
+- id: 'uet175'
+  name: 'UET175 (越南中风 MI)'
+  link: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12209182/'
+  year: 2024
+  paradigm: 'MI'
+  modality: 'EEG'
+  n: '175 中风 (计划)'
+  channels: 'MI 多任务'
+  trials: '—'
+  cohort: 'stroke'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['大 N 临床']
+  note: '目前最大的中风 MI 数据集之一,但越南人群与中国人群可能有差异,域适应需谨慎。'
+  note_en: 'One of the largest stroke-MI datasets, but the Vietnamese cohort may differ from Chinese populations — be careful with domain adaptation.'
+
+- id: 'lowerstroke2025'
+  name: 'Lower-Limb Stroke MI (Liu 2025)'
+  link: 'https://www.nature.com/articles/s41597-025-04618-4'
+  year: 2025
+  paradigm: 'MI'
+  modality: 'EEG'
+  n: '27 中风'
+  channels: '3 paradigm (SES/IES/无刺激)'
+  trials: '3 时间点纵向'
+  cohort: 'stroke'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['纵向', '下肢康复']
+  note: '纵向数据是独有价值——三个时间点观测康复期神经可塑性,研究 BCI 训练前后皮层重组的少数 longitudinal 集。'
+  note_en: 'Its unique value is being longitudinal — three timepoints tracking recovery-phase plasticity; one of few longitudinal sets for pre/post-BCI cortical reorganization.'
+
+- id: 'cogitate'
+  name: 'Cogitate iEEG (Consciousness)'
+  link: 'https://www.arc-cogitate.com/data-release'
+  year: '2025'
+  paradigm: 'VIS'
+  modality: 'ECoG'
+  n: '38'
+  channels: 'iEEG'
+  trials: '视觉意识'
+  cohort: 'clinical'
+  era: 'W3'
+  invasive: true
+  consumer: false
+  tags: ['意识 multi-center']
+  note: '多中心 iEEG 意识视觉感知数据(38 患者,对抗性合作),侵入式视觉/意识研究新资源。'
+  note_en: 'Multi-center iEEG data on conscious visual perception (38 patients, adversarial collaboration); a new invasive vision/consciousness resource.'
+
+- id: 'vocalmind'
+  name: 'VocalMind (sEEG Tonal Speech)'
+  link: 'https://zenodo.org/records/14696348'
+  year: '2025'
+  paradigm: 'SPEECH'
+  modality: 'ECoG'
+  n: '1'
+  channels: 'sEEG'
+  trials: '声调语音'
+  cohort: 'clinical'
+  era: 'W3'
+  invasive: true
+  consumer: false
+  tags: ['中文声调 sEEG']
+  note: '单被试 ~68 分钟声调(中文)语音 sEEG,侵入式声调语音解码新资源。'
+  note_en: 'Single-subject ~68-min tonal (Chinese) speech sEEG; a new invasive tonal-speech decoding resource.'
+
+- id: 'lfpmultiling'
+  name: 'Human Brain LFP (Multilingual)'
+  link: 'https://www.nature.com/articles/s41597-025-05222-2'
+  year: '2025'
+  paradigm: 'COG'
+  modality: 'ECoG'
+  n: '—'
+  channels: 'LFP'
+  trials: '多语言认知'
+  cohort: 'clinical'
+  era: 'W3'
+  invasive: true
+  consumer: false
+  tags: ['多语言 LFP']
+  note: '多患者多语言认知 + 眼动 LFP,跨语言认知的深部电极数据。'
+  note_en: 'Multi-patient multilingual cognitive + eye-tracking LFP; deep-electrode data for cross-lingual cognition.'

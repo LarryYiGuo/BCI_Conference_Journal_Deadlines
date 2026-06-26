@@ -37,6 +37,12 @@ jobs:
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: python scripts/check_format_links.py
 
+      - name: Check dataset source links
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python scripts/check_dataset_links.py
+
       - name: Commit changes
         run: |
           if ! git diff --quiet; then

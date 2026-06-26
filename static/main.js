@@ -6,6 +6,24 @@
   const THEME_OF = { ML: 'algo', DM: 'algo', NC: 'algo', CV: 'vis', AC: 'vis', SP: 'med', BME: 'med', BCI: 'neuro' };
   const THEME_COLOR = { algo: '#2563EB', vis: '#7C3AED', med: '#D97706', neuro: '#DC2626' };
 
+  // ── dataset paradigms (own filter dimension; same card style) ──
+  const PARADIGM = {
+    MI:    { zh: 'MI 运动想象',  en: 'MI Motor Imagery',  color: '#2563EB' },
+    VIS:   { zh: 'VIS 视觉解码', en: 'VIS Visual',        color: '#7C3AED' },
+    EMO:   { zh: 'EMO 情绪',     en: 'EMO Emotion',       color: '#DB2777' },
+    SPEECH:{ zh: 'SPEECH 语音',  en: 'SPEECH Speech',     color: '#0D9488' },
+    COG:   { zh: 'COG 认知负荷', en: 'COG Cognitive',     color: '#D97706' },
+    SLEEP: { zh: 'SLEEP 睡眠', en: 'SLEEP Sleep', color: '#4F46E5' },
+    SPELL: { zh: 'SPELL 拼写器', en: 'SPELL ERP/SSVEP',   color: '#059669' },
+    CLIN:  { zh: 'CLIN 临床静息', en: 'CLIN Clinical/Rest', color: '#64748B' },
+  };
+  const ERA_LABEL = {
+    W1: { zh: 'Wave 1 · 经典 (2008–2017)', en: 'Wave 1 · Classic (2008–2017)' },
+    W2: { zh: 'Wave 2 · 深度学习 (2017–2022)', en: 'Wave 2 · Deep Learning (2017–2022)' },
+    W3: { zh: 'Wave 3 · 表征对齐 (2022–2026)', en: 'Wave 3 · Alignment (2022–2026)' },
+  };
+  const DB_ICON = '<ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6c0 1.7-3.6 3-8 3S4 7.7 4 6z"/>';
+
   function themeShade(c) {
     const base = THEME_COLOR[THEME_OF[c.sub]] || '#3a3a38';
     if (/CCF-A/.test(c.rank)) return `color-mix(in srgb, ${base} 82%, #000 18%)`;
@@ -66,6 +84,17 @@
       empty: '没有匹配的会议',
       tabConf: '会议',
       tabJournal: '期刊',
+      tabDataset: '数据集',
+      dHeroTitle: '脑机接口<br>公开<em>数据集</em>',
+      dStatTotal: '收录数据集',
+      dStatClinical: '临床 cohort',
+      dStatMM: '多模态',
+      nK: '被试',
+      paradigmLbl: '范式',
+      dSearchPh: '搜索数据集 / 范式 / 模态 …',
+      dEmpty: '没有匹配的数据集',
+      dFooter: `整理自 BCI 公开数据集参考手册(Paradigm × Modality × Era 三轴)· 链接每周由 GitHub Action 做健康检查<br>
+        数据集为研究资源,无截稿日;N = 被试数,规模指标;时代 Wave 1/2/3 见每条 era`,
       jHeroTitle: '脑机接口<br>可投<em>期刊</em>',
       jUpcoming: '滚动投稿期刊',
       jStatJournals: '收录期刊',
@@ -115,6 +144,17 @@
       empty: 'No matching conferences',
       tabConf: 'Conferences',
       tabJournal: 'Journals',
+      tabDataset: 'Datasets',
+      dHeroTitle: 'Brain-Computer Interface<br>Public <em>Datasets</em>',
+      dStatTotal: 'datasets',
+      dStatClinical: 'clinical cohort',
+      dStatMM: 'multimodal',
+      nK: 'subjects',
+      paradigmLbl: 'Paradigm',
+      dSearchPh: 'Search dataset / paradigm / modality …',
+      dEmpty: 'No matching datasets',
+      dFooter: `Curated from a BCI public-dataset reference (Paradigm × Modality × Era) · links health-checked weekly by GitHub Actions<br>
+        Datasets are research resources, no deadline; N = subject count (scale metric); see each entry's era for Wave 1/2/3`,
       jHeroTitle: 'Brain-Computer Interface<br><em>Journals</em>',
       jUpcoming: 'Rolling-submission journals',
       jStatJournals: 'journals',
@@ -147,11 +187,13 @@
     langBtn: document.getElementById('langBtn'),
     mtabConf: document.getElementById('mtabConf'),
     mtabJournal: document.getElementById('mtabJournal'),
+    mtabDataset: document.getElementById('mtabDataset'),
   };
 
   let confs = [];
   let journals = null;       // lazy-loaded
-  let mode = 'conf';         // 'conf' | 'journal'
+  let datasets = null;       // lazy-loaded
+  let mode = 'conf';         // 'conf' | 'journal' | 'dataset'
   let active = new Set();
   let query = '';
   let lang = 'zh';
@@ -247,30 +289,39 @@
   // ── chrome ──
   function renderChrome() {
     document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
-    els.heroTitle.innerHTML = mode === 'journal' ? t().jHeroTitle : t().heroTitle;
-    els.heroSub.textContent = mode === 'journal' ? '' : t().heroSub;
+    const heroT = mode === 'journal' ? t().jHeroTitle : mode === 'dataset' ? t().dHeroTitle : t().heroTitle;
+    els.heroTitle.innerHTML = heroT;
+    els.heroSub.textContent = mode === 'conf' ? t().heroSub : '';
     els.heroSub.style.display = els.heroSub.textContent ? '' : 'none';
-    els.search.placeholder = mode === 'journal' ? t().jSearchPh : t().searchPh;
-    els.footer.innerHTML = mode === 'journal' ? t().jFooter : t().footer;
+    els.search.placeholder = mode === 'journal' ? t().jSearchPh : mode === 'dataset' ? t().dSearchPh : t().searchPh;
+    els.footer.innerHTML = mode === 'journal' ? t().jFooter : mode === 'dataset' ? t().dFooter : t().footer;
     els.langBtn.textContent = t().langBtn;
     els.mtabConf.textContent = t().tabConf;
     els.mtabJournal.textContent = t().tabJournal;
+    els.mtabDataset.textContent = t().tabDataset;
     els.mtabConf.classList.toggle('on', mode === 'conf');
     els.mtabJournal.classList.toggle('on', mode === 'journal');
+    els.mtabDataset.classList.toggle('on', mode === 'dataset');
   }
   function renderFilters() {
-    els.filters.innerHTML = `<span class="lbl">${t().themeLbl}</span>`;
+    const isDs = mode === 'dataset';
+    els.filters.innerHTML = `<span class="lbl">${isDs ? t().paradigmLbl : t().themeLbl}</span>`;
     const all = document.createElement('button');
     all.className = 'fbtn all' + (active.size === 0 ? ' on' : '');
     all.textContent = t().all;
     all.onclick = () => { active.clear(); saveState(); renderFilters(); render(); };
     els.filters.appendChild(all);
-    for (const key of Object.keys(THEME_OF)) {
+    const keys = isDs ? Object.keys(PARADIGM) : Object.keys(THEME_OF);
+    for (const key of keys) {
       const b = document.createElement('button');
       b.className = 'fbtn' + (active.has(key) ? ' on' : '');
-      const col = THEME_COLOR[THEME_OF[key]];
-      b.style.setProperty('--c', col);
-      b.innerHTML = `<span class="fic"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">${ICONS[key] || ''}</svg></span>${esc(t().subs[key])}`;
+      if (isDs) {
+        b.style.setProperty('--c', PARADIGM[key].color);
+        b.innerHTML = `<span class="fic"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">${DB_ICON}</svg></span>${esc(PARADIGM[key][lang === 'en' ? 'en' : 'zh'])}`;
+      } else {
+        b.style.setProperty('--c', THEME_COLOR[THEME_OF[key]]);
+        b.innerHTML = `<span class="fic"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">${ICONS[key] || ''}</svg></span>${esc(t().subs[key])}`;
+      }
       b.onclick = () => {
         active.has(key) ? active.delete(key) : active.add(key);
         saveState(); renderFilters(); render();
@@ -445,8 +496,75 @@
       <div class="stat"><div class="n">${top}</div><div class="l">${t().jStatTop}</div></div>
       <div class="stat"><div class="n">${oa}</div><div class="l">${t().jStatOA}</div></div>`;
   }
+
+  // ── dataset card (research resource — no countdown / IF / calendar) ──
+  function datasetCardHTML(d) {
+    const p = PARADIGM[d.paradigm] || { color: 'var(--ink)', zh: d.paradigm, en: d.paradigm };
+    const pLabel = p[lang === 'en' ? 'en' : 'zh'];
+    const meta = [
+      d.channels ? esc(d.channels) : '',
+      d.modality ? esc(d.modality) : '',
+      d.trials && d.trials !== '—' ? esc(d.trials) : '',
+      d.cohort && d.cohort !== 'healthy' ? esc(d.cohort) : '',
+    ].filter(Boolean).join('<span class="sep">·</span>');
+    const flags = [
+      d.invasive ? `<span class="ds-flag inv">${lang === 'en' ? 'invasive' : '侵入'}</span>` : '',
+      d.consumer ? `<span class="ds-flag con">${lang === 'en' ? 'consumer' : '消费级'}</span>` : '',
+    ].join('');
+    const tags = (d.tags || []).map(x => `<span class="ds-tag">${esc(x)}</span>`).join('');
+    const note = field(d, 'note');
+
+    return `<div class="evt">
+      <div class="evt-left">
+        <div class="evt-theme"><span class="dot" style="background:${p.color}"></span>${esc(pLabel.split(' ')[0])}</div>
+        <div class="ds-n"><div class="v" style="--tc:${p.color}">${esc(d.n || '—')}</div><div class="k">${t().nK} · N</div></div>
+        <div class="ds-era" title="${esc((ERA_LABEL[d.era] || {})[lang === 'en' ? 'en' : 'zh'] || d.era)}">${esc(d.era)}</div>
+      </div>
+      <div class="evt-right">
+        <div class="evt-name">
+          ${icon ? `<span class="evt-ic" style="background:${p.color}"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">${DB_ICON}</svg></span>` : ''}
+          <a class="nm" href="${esc(d.link)}" target="_blank" rel="noopener">${esc(d.name)} <span class="yr">${esc(d.year)}</span></a>
+          <span class="ds-flags">${flags}</span>
+        </div>
+        <div class="evt-metrics">${esc(pLabel)}${meta ? `<span class="sep">·</span>${meta}` : ''}</div>
+        ${tags ? `<div class="ds-tags">${tags}</div>` : ''}
+        ${note ? `<div class="evt-note">${esc(note)}</div>` : ''}
+      </div>
+    </div>`;
+  }
+  function visibleDatasets() {
+    const q = query.toLowerCase();
+    return (datasets || []).filter(d => {
+      if (active.size && !active.has(d.paradigm)) return false;
+      if (!q) return true;
+      return [d.name, d.paradigm, d.modality, d.cohort, d.note, d.note_en, (d.tags || []).join(' ')]
+        .join(' ').toLowerCase().includes(q);
+    });
+  }
+  function renderDatasets() {
+    const rows = visibleDatasets();
+    const ERAS = ['W1', 'W2', 'W3'];
+    let html = '';
+    for (const era of ERAS) {
+      const g = rows.filter(d => d.era === era);
+      if (!g.length) continue;
+      const lbl = (ERA_LABEL[era] || {})[lang === 'en' ? 'en' : 'zh'] || era;
+      html += `<div class="group-head">${esc(lbl)} <span class="cnt">${g.length}</span></div>${g.map(datasetCardHTML).join('')}`;
+    }
+    if (!rows.length) html = `<div class="empty">${datasets ? t().dEmpty : '…'}</div>`;
+    els.list.innerHTML = html;
+
+    const all = datasets || [];
+    const clinical = all.filter(d => d.cohort && d.cohort !== 'healthy').length;
+    const mm = all.filter(d => /\+/.test(String(d.modality))).length;
+    els.stats.innerHTML = `
+      <div class="stat"><div class="n">${all.length}</div><div class="l">${t().dStatTotal}</div></div>
+      <div class="stat"><div class="n">${clinical}</div><div class="l">${t().dStatClinical}</div></div>
+      <div class="stat"><div class="n">${mm}</div><div class="l">${t().dStatMM}</div></div>`;
+  }
   function render() {
     if (mode === 'journal') return renderJournals();
+    if (mode === 'dataset') return renderDatasets();
     const now = Date.now();
     const rows = visible();
     const upcoming = [], tbd = [], past = [];
@@ -504,22 +622,29 @@
     saveState(); renderChrome(); renderFilters(); render();
   });
 
-  // mode tabs (conferences / journals)
+  // mode tabs (conferences / journals / datasets)
+  function lazyLoad(file, assign, cb) {
+    els.list.innerHTML = `<div class="empty">…</div>`;
+    fetch(file, { cache: 'no-cache' })
+      .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+      .then(txt => { assign(jsyaml.load(txt) || []); cb(); })
+      .catch(err => { els.list.innerHTML = `<div class="empty">Failed to load: ${esc(err.message)}</div>`; });
+  }
   function setMode(m) {
     if (m === mode) return;
     mode = m;
+    active.clear();           // paradigm and sub filters aren't interchangeable
+    query = ''; els.search.value = '';
     window.scrollTo(0, 0);
     renderChrome();
-    if (mode === 'journal' && !journals) {
-      els.list.innerHTML = `<div class="empty">…</div>`;
-      fetch('data/journals.yml', { cache: 'no-cache' })
-        .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
-        .then(txt => { journals = jsyaml.load(txt) || []; render(); })
-        .catch(err => { els.list.innerHTML = `<div class="empty">Failed to load journals: ${esc(err.message)}</div>`; });
-    } else render();
+    renderFilters();
+    if (mode === 'journal' && !journals) lazyLoad('data/journals.yml', v => journals = v, render);
+    else if (mode === 'dataset' && !datasets) lazyLoad('data/datasets.yml', v => datasets = v, render);
+    else render();
   }
   els.mtabConf.addEventListener('click', () => setMode('conf'));
   els.mtabJournal.addEventListener('click', () => setMode('journal'));
+  els.mtabDataset.addEventListener('click', () => setMode('dataset'));
 
   detectLangByIP();
 

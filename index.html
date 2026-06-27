@@ -34,7 +34,7 @@ a{color:inherit}
 .mtab{font-family:var(--mono);font-size:.66rem;letter-spacing:.04em;color:var(--ink-dim);background:none;border:none;padding:.3rem .7rem;cursor:pointer;transition:all .15s;white-space:nowrap}
 .mtab+.mtab{border-left:1px solid var(--hair)}
 .mtab:hover{color:var(--ink)}
-.mtab.on{background:var(--ink);color:var(--bg)}
+.mtab.on{background:var(--orange);color:#fff}
 .nav .spacer{flex:1}
 .search{font-family:var(--mono);font-size:.7rem;width:min(220px,32vw);background:var(--bg);border:1px solid var(--hair);padding:.32rem .6rem;color:var(--ink);outline:none;transition:border .15s}
 .search:focus{border-color:var(--ink-muted)}
@@ -42,6 +42,29 @@ a{color:inherit}
 .tool{font-family:var(--mono);font-size:.68rem;letter-spacing:.04em;color:var(--ink-dim);text-decoration:none;background:none;border:1px solid var(--hair);padding:.3rem .65rem;cursor:pointer;transition:all .15s}
 .tool:hover{border-color:var(--ink-muted);color:var(--ink)}
 .tool.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+
+/* Papers button: breathing glow until first click, + hover tooltip */
+@keyframes paperPulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(216,90,48,0);border-color:var(--hair)}
+  50%{box-shadow:0 0 0 4px rgba(216,90,48,.16);border-color:var(--orange);color:var(--orange)}
+}
+#papersBtn{position:relative}
+#papersBtn.hint{animation:paperPulse 1.9s ease-in-out infinite}
+#papersBtn[data-tip]::after{
+  content:attr(data-tip);position:absolute;top:calc(100% + 8px);right:0;z-index:120;
+  width:max-content;max-width:240px;white-space:normal;text-align:left;
+  font-family:var(--sans);font-weight:300;font-size:.72rem;line-height:1.5;letter-spacing:0;
+  color:var(--bg);background:var(--ink);padding:.5rem .65rem;border-radius:6px;
+  box-shadow:0 6px 20px rgba(0,0,0,.18);
+  opacity:0;transform:translateY(-3px);pointer-events:none;transition:opacity .18s,transform .18s;
+}
+#papersBtn[data-tip]::before{
+  content:'';position:absolute;top:calc(100% + 2px);right:14px;z-index:121;
+  border:5px solid transparent;border-bottom-color:var(--ink);
+  opacity:0;transition:opacity .18s;pointer-events:none;
+}
+#papersBtn:hover[data-tip]::after{opacity:1;transform:translateY(0)}
+#papersBtn:hover[data-tip]::before{opacity:1}
 
 /* per-venue recent papers */
 .papers{margin-top:.8rem;padding-top:.7rem;border-top:1px dashed var(--line-soft)}
@@ -203,7 +226,7 @@ footer{padding:3.4rem 0 4rem;border-top:1px solid var(--hair);margin-top:3.4rem}
     </div>
     <span class="spacer"></span>
     <input class="search" id="search" type="search" placeholder="">
-    <button class="tool" id="papersBtn" title="显示/隐藏各会议近年论文">📄 论文</button>
+    <button class="tool" id="papersBtn">📄 论文</button>
     <button class="tool" id="langBtn">EN</button>
     <a class="tool" href="https://github.com/LarryYiGuo/BCI_Conference_Deadlines" target="_blank" rel="noopener">GitHub</a>
   </div>
@@ -226,6 +249,6 @@ footer{padding:3.4rem 0 4rem;border-top:1px solid var(--hair);margin-top:3.4rem}
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
-<script src="static/main.js?v=20260612-16"></script>
+<script src="static/main.js?v=20260612-17"></script>
 </body>
 </html>

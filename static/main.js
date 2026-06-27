@@ -85,6 +85,7 @@
       tabConf: '会议',
       tabJournal: '期刊',
       tabDataset: '数据集',
+      papersTip: '点击展示各会议 / 期刊近五年的经典论文',
       dHeroTitle: '脑机接口<br>公开<em>数据集</em>',
       dStatTotal: '收录数据集',
       dStatClinical: '临床 cohort',
@@ -145,6 +146,7 @@
       tabConf: 'Conferences',
       tabJournal: 'Journals',
       tabDataset: 'Datasets',
+      papersTip: 'Show landmark BCI/EEG papers (last 5 years) under each conference & journal',
       dHeroTitle: 'Brain-Computer Interface<br>Public <em>Datasets</em>',
       dStatTotal: 'datasets',
       dStatClinical: 'clinical cohort',
@@ -300,6 +302,7 @@
     els.footer.innerHTML = mode === 'journal' ? t().jFooter : mode === 'dataset' ? t().dFooter : t().footer;
     els.langBtn.textContent = t().langBtn;
     els.papersBtn.textContent = lang === 'en' ? '📄 Papers' : '📄 论文';
+    els.papersBtn.setAttribute('data-tip', t().papersTip);
     els.papersBtn.style.display = mode === 'dataset' ? 'none' : '';
     els.papersBtn.classList.toggle('on', showPapers);
     els.mtabConf.textContent = t().tabConf;
@@ -683,6 +686,8 @@
 
   els.papersBtn.addEventListener('click', () => {
     showPapers = !showPapers;
+    els.papersBtn.classList.remove('hint');          // breathing glow stops on first click
+    localStorage.setItem('bci-ddl-paperhint', '1');
     localStorage.setItem('bci-ddl-papers', showPapers ? '1' : '0');
     els.papersBtn.classList.toggle('on', showPapers);
     if (showPapers && !papers) {
@@ -693,6 +698,8 @@
     } else render();
   });
   if (localStorage.getItem('bci-ddl-papers') === '1') els.papersBtn.click();
+  // breathing glow to draw attention, until the user has clicked Papers once
+  if (localStorage.getItem('bci-ddl-paperhint') !== '1' && !showPapers) els.papersBtn.classList.add('hint');
 
   detectLangByIP();
 

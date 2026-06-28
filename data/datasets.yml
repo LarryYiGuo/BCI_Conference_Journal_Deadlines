@@ -2224,3 +2224,23 @@
   trials_en: multilingual cognition
   tags_en:
   - multilingual LFP
+- id: 'sseeg'
+  name: 'SilentSpeech-EEG (SS-EEG)'
+  link: 'https://arxiv.org/abs/2504.21214'
+  year: '2025'
+  paradigm: 'SPEECH'
+  modality: 'EEG'
+  n: '12'
+  channels: '—'
+  trials: '主动默念 · 24 词'
+  cohort: 'healthy'
+  era: 'W3'
+  invasive: false
+  consumer: false
+  tags: ['主动默念语音', 'active-BCI']
+  note: 'LBLM / BrainStack 自采的主动式(active-BCI)默念语音 EEG 数据集:约 120 小时、12 名被试、24 个常用英文词(每人 16 session、6 个语义组)。LBLM(ACM MM 2025)在其上提出 FSTP 自监督,BrainStack 将其命名为 SS-EEG 并做 Neuro-MoE 基准;摆脱 ZuCo 阅读诱发,转向主动默念范式。作者称将公开,正式下载链接待确认,暂以论文页为入口。'
+  note_en: 'A self-collected active-BCI silent-speech EEG dataset from LBLM / BrainStack: ~120 hours, 12 subjects, 24 common English words (16 sessions/subject, 6 semantic groups). LBLM (ACM MM 2025) introduces FSTP self-supervision on it; BrainStack names it SS-EEG and benchmarks a Neuro-MoE — moving past ZuCo reading-evoked data toward an active silent-speech paradigm. The authors state it will be released; the official download link is unconfirmed, so the paper page is the entry point for now.'
+  trials_en: active silent speech · 24 words
+  tags_en:
+  - active silent speech
+  - active-BCI

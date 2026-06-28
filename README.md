@@ -29,7 +29,7 @@ per-venue **recent-paper index**. Editorial style inspired by
 
 ## Datasets
 
-- **110 public BCI/EEG/MEG/fNIRS datasets**, grouped by era (*Wave 1/2/3*) and filtered by
+- **111 public BCI/EEG/MEG/fNIRS datasets**, grouped by era (*Wave 1/2/3*) and filtered by
   **paradigm** (MI / Vision / Emotion / Speech / Cognitive / Sleep / ERP-SSVEP / Clinical)
 - Each card shows subject count (**N**), modality, cohort and tags; clinical and
   invasive/consumer-grade datasets are flagged
@@ -37,7 +37,7 @@ per-venue **recent-paper index**. Editorial style inspired by
 ## Papers (toggle)
 
 - A **📄 Papers** toggle in the nav (Conferences & Journals views) expands a *recent BCI/EEG
-  papers* index under each venue card — **209 representative 2021-2026 papers across 57
+  papers* index under each venue card — **213 representative 2021-2026 papers across 57
   venues**, each linking to a Google Scholar search
 - Curated from a top-venue paper list plus source-verified parallel search; **fully
   bilingual** (titles + one-line descriptions in EN/中文)
@@ -98,14 +98,14 @@ MIT
 
 ## 数据集
 
-- **110 个公开 BCI/EEG/MEG/fNIRS 数据集**,按时代(*Wave 1/2/3*)分组,按**范式**过滤
+- **111 个公开 BCI/EEG/MEG/fNIRS 数据集**,按时代(*Wave 1/2/3*)分组,按**范式**过滤
   (运动想象 / 视觉 / 情绪 / 语音 / 认知负荷 / 睡眠 / ERP-SSVEP / 临床)
 - 卡片显示被试数(**N**)、模态、cohort 与标签;临床、侵入式/消费级数据集会标记
 
 ## 论文(开关)
 
 - 导航栏 **📄 论文** 开关(会议与期刊视图)在每个 venue 卡片下展开*近年 BCI/EEG 论文*索引——
-  **209 篇 2021-2026 代表作,覆盖 57 个 venue**,每篇链到 Google Scholar 搜索
+  **213 篇 2021-2026 代表作,覆盖 57 个 venue**,每篇链到 Google Scholar 搜索
 - 整理自顶会论文清单 + 带来源核验的并行检索;**完全中英双语**(标题 + 一句话说明)
 
 ## 通用

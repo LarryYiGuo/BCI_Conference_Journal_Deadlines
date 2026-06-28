@@ -570,6 +570,27 @@ eccv28:
     desc_en: 'Introduces the Recon3DMind task and a three-stage framework to decode and reconstruct high-quality 3D objects from fMRI for the first time.'
 
 acmmm27:
+  - title: 'Pretraining Large Brain Language Model for Active BCI: Silent Speech (LBLM)'
+    group: '悉尼科技大学 Chin-Teng Lin 组 / 成功大学'
+    group_en: 'University of Technology Sydney (Chin-Teng Lin Lab) / National Cheng Kung University'
+    year: 2025
+    tag: 'INTL'
+    desc: '范式断裂之作:抛弃 ZuCo 阅读诱发,自采主动默念语音数据集(~120h/12人/24词),提出 FSTP(未来谱-时预测)自监督作为 LaBraM/EEGPT 掩码重建的替代。跨 session 语义级 47.0% / 词级 39.6%(诚实的 SOTA)。'
+    desc_en: 'A paradigm break: abandons ZuCo reading-evoked data for a self-collected active silent-speech dataset (~120h / 12 subjects / 24 words) and proposes FSTP (Future Spectro-Temporal Prediction) self-supervision as an alternative to LaBraM/EEGPT masked reconstruction. 47.0% sentence-level / 39.6% word-level cross-session accuracy (an honest SOTA).'
+  - title: 'MindSpeak: A Real-Time BCI System for Silent Speech (Demo)'
+    group: '悉尼科技大学 Chin-Teng Lin 组(ACM MM 2025 Demo/Video)'
+    group_en: 'University of Technology Sydney (Chin-Teng Lin Lab) — ACM MM 2025 Demo/Video'
+    year: 2025
+    tag: 'INTL'
+    desc: 'LBLM 默念语音流水线的实时落地系统,加 SSVEP 做免手选择/确认(默念解码 77.3%,SSVEP 选择 98.9%)。'
+    desc_en: 'A real-time deployment of the LBLM silent-speech pipeline, adding SSVEP for hands-free selection/confirmation (77.3% silent-speech decoding, 98.9% SSVEP selection).'
+  - title: 'Towards Linguistic Neural Representation Learning and Sentence Retrieval from EEG Recordings'
+    group: '悉尼科技大学 Chin-Teng Lin 组(ACM MM 2024 workshop · BCIMM)'
+    group_en: 'University of Technology Sydney (Chin-Teng Lin Lab) — ACM MM 2024 workshop (BCIMM)'
+    year: 2024
+    tag: 'INTL'
+    desc: '对"EEG-to-Text 是否真在解码"的构造性回应:Conformer 编码器用掩码对比学词级语义,再以免训练检索从候选句池取最匹配句而非生成,从结构上杜绝 LLM 幻觉。'
+    desc_en: 'A constructive response to whether EEG-to-text truly decodes: a Conformer encoder learns word-level semantics via masked contrastive learning, then training-free retrieval picks the best-matching sentence from a candidate pool instead of generating — structurally ruling out LLM hallucination.'
   - title: 'BrainFLORA: Uncovering Brain Concept Representation via Multimodal Neural Embeddings'
     group: '南方科技大学 NCC Lab(刘泉影组)'
     group_en: 'NCC Lab, Southern University of Science and Technology (SUSTech)'
@@ -1411,6 +1432,13 @@ journalofneuraleng:
     desc_en: 'Proposes generalized neural decoders that transfer across participants and recording modalities, reducing BCI individual differences and calibration cost; a representative EEG/ECoG transfer-learning work.'
 
 ieeetnsre:
+  - title: 'BELT: Bootstrapped EEG-to-Language Training by Natural Language Supervision'
+    group: '悉尼科技大学 GrapheneX-UTS HAI(Chin-Teng Lin 组)'
+    group_en: 'GrapheneX-UTS HAI Centre, University of Technology Sydney (Chin-Teng Lin Lab)'
+    year: 2024
+    tag: 'INTL'
+    desc: '不再做端到端"翻译",而是用自然语言监督(CLIP 式对比)学习可迁移的 EEG-语言表征,支持零样本情感等下游任务。引正式 TNSRE 版——其 arXiv v1(2309.12056)已被作者撤稿。'
+    desc_en: 'Reframes EEG-to-text from end-to-end translation to learning a transferable EEG–language representation via natural-language (CLIP-style) supervision, enabling zero-shot downstream tasks such as sentiment. Cite the TNSRE version — the arXiv v1 (2309.12056) was withdrawn by the authors.'
   - title: 'EEG Conformer: Convolutional Transformer for EEG Decoding and Visualization'
     group: '清华大学(高小榕组)/华南理工大学'
     group_en: 'Tsinghua University (Xiaorong Gao) / South China University of Technology'

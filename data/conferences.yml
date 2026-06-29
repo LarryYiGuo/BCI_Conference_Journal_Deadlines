@@ -35,7 +35,7 @@
   year: 2026
   full_name: Asian Conference on Machine Learning
   link: 'https://www.acml-conf.org/2026/'
-  deadline: '2026-06-26 23:59'
+  deadline: '2026-07-05 23:59'
   abstract_deadline:
   tz: '-12:00'
   tz_label: AoE
@@ -228,13 +228,13 @@
   title: KDD
   year: 2027
   full_name: ACM SIGKDD Conference on Knowledge Discovery and Data Mining
-  link: 'https://kdd.org/'
-  deadline: '2026-07-31 23:59'
-  abstract_deadline: '2026-07-24 23:59'
+  link: 'https://kdd2027.kdd.org/'
+  deadline: '2026-07-26 23:59'
+  abstract_deadline: '2026-07-19 23:59'
   tz: '-12:00'
   tz_label: AoE
-  date: Aug 2027
-  place: TBD
+  date: August 2027 (exact dates TBD)
+  place: San Jose, California, USA
   format: 'https://kdd2027.kdd.org/research-track-call-for-papers/'
   format_type: ACM sigconf 模板(CFP formatting 段)
   format_type_en: ACM sigconf template
@@ -243,8 +243,8 @@
   core: A*
   h5: 124
   ccfddl: sigkdd
-  track:
-  estimated: true
+  track: 1st round of 2 total rounds
+  estimated: false
   note: 每年两个 cycle(8 月 / 次年 2 月);按 KDD 2026 Cycle 1 规律推测
   note_en: Two cycles per year (Aug / following Feb); estimated from the KDD 2026 Cycle 1 pattern
 
@@ -473,8 +473,8 @@
   year: 2027
   full_name: IEEE/CVF Winter Conference on Applications of Computer Vision
   link: 'https://wacv.thecvf.com/'
-  deadline: '2026-06-26 23:59'
-  abstract_deadline: '2026-06-19 23:59'
+  deadline: '2026-08-28 23:59'
+  abstract_deadline: '2026-08-21 23:59'
   tz: '-12:00'
   tz_label: AoE
   date: Jan 5 - 9, 2027
@@ -487,7 +487,7 @@
   core: A
   h5: 131
   ccfddl: wacv
-  track: Round 1
+  track: Second round
   estimated: false
   note: 两轮投稿——Round 1 注册 6/19 / 提交 6/26;Round 2 注册 8/21 / 提交 8/28
   note_en: Two rounds — R1 register Jun 19 / submit Jun 26; R2 register Aug 21 / submit Aug 28
